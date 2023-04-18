@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Budget_Tracker</string>
+    <string name="monthly_budget">Monthly Budget</string>
+    <string name="detail_monthly_budget1">Select the month</string>
+    <string name="detail_monthly_budget2">to create the budget</string>
+    <string name="m1">January</string>
+    <string name="m2">February</string>
+    <string name="m3">March</string>
+    <string name="m4">April</string>
+    <string name="m5">May</string>
+    <string name="m6">June</string>
+    <string name="m7">July</string>
+    <string name="m8">August</string>
+    <string name="m9">September</string>
+    <string name="m10">October</string>
+    <string name="m11">November</string>
+    <string name="m12">December</string>
+    <string name="Balance">Balance</string>
+    <string name="detail">Detail</string>
+    <string name="incomes">Incomes</string>
+    <string name="expenses">Expenses</string>
+    <string name="savings">Savings</string>
+    <string name="plus" >+</string>
+    <string name="overview">Overview</string>
+    <string-array name="options_array">
+        <item>@string/m1</item>
+        <item>@string/m2</item>
+        <item>@string/m3</item>
+        <item>@string/m4</item>
+        <item>@string/m5</item>
+        <item>@string/m6</item>
+        <item>@string/m7</item>
+        <item>@string/m8</item>
+        <item>@string/m9</item>
+        <item>@string/m10</item>
+        <item>@string/m11</item>
+        <item>@string/m12</item>
+    </string-array>
 </resources>
