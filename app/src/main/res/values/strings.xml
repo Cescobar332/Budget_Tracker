@@ -20,8 +20,11 @@
     <string name="incomes">Incomes</string>
     <string name="expenses">Expenses</string>
     <string name="savings">Savings</string>
-    <string name="plus" >+</string>
+    <string name="plus">+</string>
     <string name="overview">Overview</string>
+    <string name="tv_overview">Overview</string>
+    <string name="tv_balance">Balance</string>
+    <string name="signo_dinero">$</string>
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>
