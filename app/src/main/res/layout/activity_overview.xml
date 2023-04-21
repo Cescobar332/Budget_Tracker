@@ -10,11 +10,10 @@
         android:id="@+id/tv_principal_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="@string/tv_overview"
-        android:textColor="@color/black"
-        android:textSize="28dp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,10 +22,9 @@
         android:id="@+id/tv_balance_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="2dp"
         android:text="@string/tv_balance"
-        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_signo_dolar1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +47,6 @@
         android:layout_marginStart="74dp"
         android:layout_marginTop="2dp"
         android:text="@string/signo_dinero"
-        android:textColor="@color/black"
         android:textSize="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
@@ -62,6 +59,7 @@
         android:layout_marginBottom="11dp"
         android:text="@string/incomes"
         android:textColor="@color/purple_dark"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/pb_income_overview"
         app:layout_constraintEnd_toEndOf="@+id/tv_incomes_num_overview" />
 
@@ -87,17 +85,16 @@
 
     <ImageView
         android:id="@+id/iv_incomes_overview"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginTop="19dp"
         android:layout_marginBottom="25dp"
-        android:background="@color/purple_dark"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/tv_expenses_overview"
         app:layout_constraintEnd_toEndOf="@+id/iv_expenses_overview"
         app:layout_constraintStart_toStartOf="@+id/tv_incomes_overview"
         app:layout_constraintTop_toTopOf="@+id/tv_incomes_overview"
-        app:srcCompat="@drawable/incomes" />
+        app:srcCompat="@drawable/pincomes" />
 
     <ProgressBar
         android:id="@+id/pb_income_overview"
@@ -128,6 +125,7 @@
         android:layout_marginStart="16dp"
         android:text="@string/expenses"
         android:textColor="@color/blue_dark"
+        android:textSize="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_expenses_num_overview"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -154,17 +152,16 @@
 
     <ImageView
         android:id="@+id/iv_expenses_overview"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginTop="44dp"
         android:layout_marginBottom="47dp"
-        android:background="@color/blue_dark"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tv_savings_overview"
         app:layout_constraintEnd_toEndOf="@+id/iv_savings_overview"
         app:layout_constraintStart_toStartOf="@+id/tv_expenses_overview"
         app:layout_constraintTop_toBottomOf="@+id/iv_incomes_overview"
-        app:srcCompat="@drawable/expenses" />
+        app:srcCompat="@drawable/bexpenses" />
 
     <ProgressBar
         android:id="@+id/pb_expenses_overview"
@@ -194,6 +191,7 @@
         android:layout_marginTop="78dp"
         android:text="@string/savings"
         android:textColor="@color/green_dark"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_expenses_overview" />
 
@@ -219,15 +217,14 @@
 
     <ImageView
         android:id="@+id/iv_savings_overview"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/green_dark"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@+id/pb_savings_overview"
         app:layout_constraintStart_toStartOf="@+id/tv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_overview"
-        app:srcCompat="@drawable/savings" />
+        app:srcCompat="@drawable/gsavings" />
 
     <ProgressBar
         android:id="@+id/pb_savings_overview"
@@ -249,4 +246,22 @@
         android:textColor="@color/green_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria_expenses_overview" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="211dp"
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="280dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/green2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
