@@ -15,6 +15,9 @@
             android:name=".incomesActivity"
             android:exported="false" />
         <activity
+            android:name=".OverviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
