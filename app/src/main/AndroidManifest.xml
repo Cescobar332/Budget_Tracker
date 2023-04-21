@@ -12,10 +12,13 @@
         android:theme="@style/Theme.Budget_Tracker"
         tools:targetApi="31">
         <activity
-            android:name=".expensesActivity"
+            android:name=".detailActivity"
             android:exported="false" />
         <activity
-            android:name=".incomesActivity"
+            android:name=".savingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expensesActivity"
             android:exported="false" />
         <activity
             android:name=".OverviewActivity"
@@ -24,7 +27,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_detail"
+            android:name=".incomesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

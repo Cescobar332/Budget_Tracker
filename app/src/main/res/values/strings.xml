@@ -32,6 +32,8 @@
     <string name="save">Save</string>
     <string name="incomes_detail">Income\'s detail</string>
     <string name="done">Done</string>
+    <string name="expenses_detail">Expense\'s detail</string>
+    <string name="savings_detail">Saving\'s detail</string>
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>
