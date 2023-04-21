@@ -11,6 +11,7 @@
     <color name="green_light">#58EDE9</color>
     <color name="blue_dark">#4F86C6</color>
     <color name="purple_dark">#744FC6</color>
+    <color name="purple_op">#4D744FC6</color>
     <color name="blue_light">#4FB0C6</color>
     <color name="green_opacity">#5C58EDE9</color>
     <color name="blue_l9opacity">#E64FB0C6</color>
