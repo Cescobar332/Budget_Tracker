@@ -20,7 +20,7 @@
     <string name="incomes">Incomes</string>
     <string name="expenses">Expenses</string>
     <string name="savings">Savings</string>
-    <string name="plus" >+</string>
+    <string name="plus">+</string>
     <string name="overview">Overview</string>
     <string name="tv_overview">Overview</string>
     <string name="tv_balance">Balance</string>
@@ -45,5 +45,11 @@
         <item>@string/m10</item>
         <item>@string/m11</item>
         <item>@string/m12</item>
+    </string-array>
+    <string-array name="filter_array">
+        <item>Filter</item>
+        <item>Health</item>
+        <item>Work</item>
+        <item>Gifts</item>
     </string-array>
 </resources>

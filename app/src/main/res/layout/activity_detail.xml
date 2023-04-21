@@ -302,13 +302,14 @@
 
     <TextView
         android:id="@+id/tv_filter1"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/shape_border_button_blue"
+        android:gravity="center"
         android:padding="8dp"
         android:text="TextView"
         android:textColor="@color/blue_light"
@@ -320,12 +321,13 @@
 
     <TextView
         android:id="@+id/tv_filter2"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/shape_border_button_blue"
+        android:gravity="center"
         android:padding="8dp"
         android:text="TextView"
         android:textColor="@color/blue_light"
@@ -336,12 +338,13 @@
 
     <TextView
         android:id="@+id/tv_filter3"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/shape_border_button_blue"
+        android:gravity="center"
         android:padding="8dp"
         android:text="TextView"
         android:textColor="@color/blue_light"
