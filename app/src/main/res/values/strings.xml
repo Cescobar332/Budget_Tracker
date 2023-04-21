@@ -32,6 +32,11 @@
     <string name="save">Save</string>
     <string name="incomes_detail">Income\'s detail</string>
     <string name="done">Done</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="register">Register</string>
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>
