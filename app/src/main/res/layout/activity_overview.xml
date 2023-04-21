@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OverviewActivity">
+
+    <TextView
+        android:id="@+id/tv_principal_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:gravity="center"
+        android:text="@string/tv_overview"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_balance_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/tv_balance"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_signo_dolar1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_num_balance_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_balance_overview"
+        app:layout_constraintStart_toStartOf="@+id/tv_balance_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
+
+    <TextView
+        android:id="@+id/tv_signo_dolar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/signo_dinero"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
+
+    <TextView
+        android:id="@+id/tv_incomes_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/incomes"
+        android:textColor="@color/purple_dark"
+        app:layout_constraintBottom_toTopOf="@+id/pb_income_overview"
+        app:layout_constraintEnd_toEndOf="@+id/tv_incomes_num_overview" />
+
+    <TextView
+        android:id="@+id/tv_incomes_num_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_dark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_incomes_overview"
+        app:layout_constraintEnd_toStartOf="@+id/pb_income_overview"
+        app:layout_constraintStart_toStartOf="@+id/pb_income_overview" />
+
+    <TextView
+        android:id="@+id/tv_signo_dolar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/signo_dinero"
+        android:textColor="@color/purple_dark"
+        app:layout_constraintBottom_toTopOf="@+id/pb_income_overview"
+        app:layout_constraintEnd_toEndOf="@+id/pb_income_overview" />
+
+    <ImageView
+        android:id="@+id/iv_incomes_overview"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="25dp"
+        android:background="@color/purple_dark"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/tv_expenses_overview"
+        app:layout_constraintEnd_toEndOf="@+id/iv_expenses_overview"
+        app:layout_constraintStart_toStartOf="@+id/tv_incomes_overview"
+        app:layout_constraintTop_toTopOf="@+id/tv_incomes_overview"
+        app:srcCompat="@drawable/incomes" />
+
+    <ProgressBar
+        android:id="@+id/pb_income_overview"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="72dp"
+        android:progressTint="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_categoria_expenses_overview"
+        app:layout_constraintEnd_toEndOf="@+id/pb_expenses_overview"
+        app:layout_constraintStart_toStartOf="@+id/pb_expenses_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signo_dolar1" />
+
+    <TextView
+        android:id="@+id/tv_categoria_incomes_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:textColor="@color/purple_dark"
+        app:layout_constraintBottom_toTopOf="@+id/tv_categoria_expenses_overview"
+        app:layout_constraintStart_toStartOf="@+id/tv_categoria_expenses_overview" />
+
+    <TextView
+        android:id="@+id/tv_expenses_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/expenses"
+        android:textColor="@color/blue_dark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_expenses_num_overview"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_expenses_num_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:textColor="@color/blue_dark"
+        app:layout_constraintEnd_toStartOf="@+id/pb_income_overview"
+        app:layout_constraintStart_toStartOf="@+id/pb_income_overview"
+        app:layout_constraintTop_toBottomOf="@+id/pb_income_overview" />
+
+    <TextView
+        android:id="@+id/tv_signo_dolar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/signo_dinero"
+        android:textColor="@color/blue_dark"
+        app:layout_constraintBottom_toTopOf="@+id/pb_expenses_overview"
+        app:layout_constraintEnd_toEndOf="@+id/pb_expenses_overview" />
+
+    <ImageView
+        android:id="@+id/iv_expenses_overview"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="47dp"
+        android:background="@color/blue_dark"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_savings_overview"
+        app:layout_constraintEnd_toEndOf="@+id/iv_savings_overview"
+        app:layout_constraintStart_toStartOf="@+id/tv_expenses_overview"
+        app:layout_constraintTop_toBottomOf="@+id/iv_incomes_overview"
+        app:srcCompat="@drawable/expenses" />
+
+    <ProgressBar
+        android:id="@+id/pb_expenses_overview"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:progressTint="@color/blue_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_expenses_overview"
+        app:layout_constraintEnd_toEndOf="@+id/pb_savings_overview"
+        app:layout_constraintStart_toStartOf="@+id/pb_savings_overview"
+        app:layout_constraintTop_toTopOf="@+id/iv_expenses_overview" />
+
+    <TextView
+        android:id="@+id/tv_categoria_expenses_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_categoria_savings_overview"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_savings_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="78dp"
+        android:text="@string/savings"
+        android:textColor="@color/green_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expenses_overview" />
+
+    <TextView
+        android:id="@+id/tv_savings_num_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/blue_dark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_savings_overview"
+        app:layout_constraintStart_toStartOf="@+id/pb_savings_overview" />
+
+    <TextView
+        android:id="@+id/tv_signo_dolar4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/signo_dinero"
+        android:textColor="@color/green_dark"
+        app:layout_constraintBottom_toTopOf="@+id/pb_savings_overview"
+        app:layout_constraintEnd_toEndOf="@+id/pb_savings_overview" />
+
+    <ImageView
+        android:id="@+id/iv_savings_overview"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/green_dark"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/pb_savings_overview"
+        app:layout_constraintStart_toStartOf="@+id/tv_savings_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_savings_overview"
+        app:srcCompat="@drawable/savings" />
+
+    <ProgressBar
+        android:id="@+id/pb_savings_overview"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9dp"
+        android:progressTint="@color/green_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_savings_overview"
+        app:layout_constraintStart_toEndOf="@+id/tv_savings_overview"
+        app:layout_constraintTop_toTopOf="@+id/iv_savings_overview" />
+
+    <TextView
+        android:id="@+id/tv_categoria_savings_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="74dp"
+        android:textColor="@color/green_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_categoria_expenses_overview" />
+</androidx.constraintlayout.widget.ConstraintLayout>
