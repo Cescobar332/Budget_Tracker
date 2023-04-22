@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Budget_Tracker"
         tools:targetApi="31">
+
         <activity
             android:name=".detailActivity"
             android:exported="false" />
