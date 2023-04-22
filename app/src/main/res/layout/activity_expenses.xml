@@ -6,4 +6,248 @@
     android:layout_height="match_parent"
     tools:context=".expensesActivity">
 
+    <ImageButton
+        android:id="@+id/btn_user_blueD"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/shape_button_circle"
+        android:backgroundTint="@color/blue_dark"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_user6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user" />
+
+    <TextView
+        android:id="@+id/tv_expenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="157dp"
+        android:text="@string/expenses"
+        android:textColor="@color/blue_dark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_value_expenses"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="73dp"
+        android:background="@drawable/shape_border_button_blue_dark"
+        android:ems="10"
+        android:hint="0,0$"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/ButtonTextStyle"
+        android:textColor="@color/blue_dark"
+        android:textColorHint="@color/blue_dark"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expenses" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/shape_main_activity"
+        android:backgroundTint="@color/blue_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="100dp"
+            android:text="@string/category"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/my_spinner_expenses"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="70dp"
+            android:background="@drawable/shape_rounded_button"
+            android:contextClickable="true"
+            android:textAlignment="center"
+            android:textAppearance="@style/MySpinnerStyle"
+            android:textColor="@color/white"
+            android:textSize="34dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_category"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_filter11"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/shape_border_button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_spinner_expenses" />
+
+        <TextView
+            android:id="@+id/tv_filter22"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/shape_border_button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_filter33"
+            app:layout_constraintStart_toEndOf="@+id/tv_filter11"
+            app:layout_constraintTop_toBottomOf="@+id/my_spinner_expenses" />
+
+        <TextView
+            android:id="@+id/tv_filter33"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/shape_border_button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_spinner_expenses" />
+
+        <TextView
+            android:id="@+id/background"
+            android:layout_width="320dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/shape_rounded_button"
+            android:padding="20dp"
+            android:text="@string/new_cat"
+            android:textColor="@color/blue_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter11" />
+
+        <EditText
+            android:id="@+id/et_new_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_border_button_purple"
+            android:elevation="150dp"
+            android:ems="10"
+            android:hint="@string/cat_name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/blue_dark"
+            android:textColorHint="@color/blue_l5opacity"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintStart_toStartOf="@+id/background"
+            app:layout_constraintTop_toTopOf="@+id/background" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shape_rounded_button"
+            android:backgroundTint="@color/blue_dark"
+            android:text="@string/save"
+            android:textAppearance="@style/ButtonTextStyle"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintStart_toStartOf="@+id/background"
+            app:layout_constraintTop_toBottomOf="@+id/et_new_category" />
+
+        <TextView
+            android:id="@+id/tv_detail_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="305dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/detail"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/background" />
+
+        <EditText
+            android:id="@+id/et_detail"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/shape_border_button"
+            android:ems="10"
+            android:hint="@string/expenses_detail"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_blue" />
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/shape_rounded_button"
+            android:text="@string/done"
+            android:textAppearance="@style/ButtonTextStyle"
+            android:textColor="@color/blue_dark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_detail" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class activity_detail extends AppCompatActivity {
+public class detailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class activity_detail extends AppCompatActivity {
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
 
-        Spinner mySpinner = findViewById(R.id.my_spinner);
+        Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
         List<String> options = new ArrayList<>(Arrays.asList(optionsArray));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, options);
