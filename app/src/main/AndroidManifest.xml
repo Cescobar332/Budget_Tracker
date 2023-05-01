@@ -6,8 +6,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/ic_budget_tracker_round"
+        android:label="@string/display_name_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.Budget_Tracker"
         tools:targetApi="31">
@@ -16,7 +16,7 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".incomesActivity"
             android:exported="false" />
         <activity
             android:name=".expensesActivity"
@@ -25,7 +25,7 @@
             android:name=".savingsActivity"
             android:exported="false" />
         <activity
-            android:name=".expensesActivity"
+            android:name=".detailActivity"
             android:exported="false" />
         <activity
             android:name=".OverviewActivity"
@@ -34,7 +34,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".incomesActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

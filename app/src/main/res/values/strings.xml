@@ -40,6 +40,7 @@
     <string name="email">Email</string>
     <string name="expenses_detail">Expense\'s detail</string>
     <string name="savings_detail">Saving\'s detail</string>
+    <string name="display_name_app">Budget Tracker</string>
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -19,11 +20,12 @@
 
     <ImageView
         android:id="@+id/iv_border_login_down"
-        android:layout_width="0dp"
+        android:layout_width="240dp"
         android:layout_height="225dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btn_register_login"
         app:srcCompat="@drawable/bluedge2" />
 
@@ -53,10 +55,11 @@
         android:id="@+id/tv_image_user_login"
         android:layout_width="40dp"
         android:layout_height="45dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/user"
         android:backgroundTint="@color/blue_light"
+        app:layout_constraintEnd_toStartOf="@+id/et_username_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_login_edittexts" />
 
@@ -64,24 +67,26 @@
         android:id="@+id/et_username_login"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_border_button"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="text"
         android:textColorHint="@color/blue_light"
-        app:layout_constraintStart_toEndOf="@+id/tv_image_user_login"
+        app:layout_constraintEnd_toEndOf="@+id/iv_login_edittexts"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_login_edittexts" />
 
     <TextView
         android:id="@+id/tv_image_lock_login"
         android:layout_width="40dp"
         android:layout_height="45dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/password"
         android:backgroundTint="@color/blue_light"
+        app:layout_constraintEnd_toStartOf="@+id/et_password_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_image_user_login" />
 
@@ -89,29 +94,32 @@
         android:id="@+id/et_password_login"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape_border_button"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="text|textPassword"
         android:textColorHint="@color/blue_light"
-        app:layout_constraintEnd_toStartOf="@+id/ibtn_next_login"
+        app:layout_constraintEnd_toEndOf="@+id/iv_login_edittexts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username_login" />
 
     <ImageButton
         android:id="@+id/ibtn_next_login"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@color/white"
+        android:background="#00FFFFFF"
+        android:onClick="clickIniciarSesion"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/iv_border_login_down"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/et_password_login"
+        app:layout_constraintStart_toStartOf="@+id/iv_login_edittexts"
         app:layout_constraintTop_toTopOf="@+id/iv_login_edittexts"
+        app:layout_constraintVertical_bias="0.01"
         app:srcCompat="@drawable/nextblue" />
 
     <TextView
@@ -131,6 +139,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="215dp"
         android:background="@drawable/shape_border_button_blue"
+        android:onClick="clickRegister"
         android:text="@string/register"
         android:textColor="@color/blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
