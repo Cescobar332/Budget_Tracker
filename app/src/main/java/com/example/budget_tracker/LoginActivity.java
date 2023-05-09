@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         referenciar();
-        misPreferencias = getSharedPreferences("tienda_app", MODE_PRIVATE);
+        misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         //verificar sí está logueado
         if (misPreferencias.getBoolean("logueado", false)) {
             Intent myIntent = new Intent(this, MainActivity.class);
@@ -79,4 +79,5 @@ public class LoginActivity extends AppCompatActivity {
     public void clickRegister (View view){
         startActivity(new Intent(this, RegisterActivity.class));
     }
+
 }
