@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,6 +17,13 @@ import java.util.List;
 
 public class incomesActivity extends AppCompatActivity {
 
+    EditText etNewCategory;
+    Button btnSave;
+
+    List<String> filter;
+    private ArrayAdapter<String> adapter2;
+
+    Spinner mySpinner2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +31,11 @@ public class incomesActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1111);
         TextView tv_filter2 = findViewById(R.id.tv_filter2222);
         TextView tv_filter3 = findViewById(R.id.tv_filter3333);
-
-        Spinner mySpinner2 = findViewById(R.id.my_spinner_incomes);
+        etNewCategory = findViewById(R.id.et_new_category);
+        btnSave = findViewById(R.id.btn_save);
+        mySpinner2 = findViewById(R.id.my_spinner_incomes);
         String[] filterArray = getResources().getStringArray(R.array.filter_array);
-        List<String> filter = new ArrayList<>(Arrays.asList(filterArray));
+        filter = new ArrayList<>(Arrays.asList(filterArray));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
@@ -46,5 +56,13 @@ public class incomesActivity extends AppCompatActivity {
                 // Lógica para cuando no se ha seleccionado ninguna opción del spinner
             }
         });
+    }
+
+    public void clickSave (View view){
+        String cat = etNewCategory.getText().toString();
+        filter.add(cat);
+        ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
+        adapter2.notifyDataSetChanged();
+        etNewCategory.setText("");
     }
 }
