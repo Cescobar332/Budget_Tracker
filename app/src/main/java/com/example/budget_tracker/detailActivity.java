@@ -2,6 +2,7 @@ package com.example.budget_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class detailActivity extends AppCompatActivity {
-
+    private Spinner spinnerMonth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,7 @@ public class detailActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
+
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -38,6 +40,26 @@ public class detailActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
         mySpinner.setAdapter(adapter);
+        List<String> monthList = new ArrayList<>();
+        monthList.add("January");
+        monthList.add("February");
+        monthList.add("March");
+        monthList.add("April");
+        monthList.add("May");
+        monthList.add("June");
+        monthList.add("July");
+        monthList.add("August");
+        monthList.add("September");
+        monthList.add("October");
+        monthList.add("November");
+        monthList.add("December");
+
+
+        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthList);
+        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMonth.setAdapter(monthAdapter);
+
+
 
         if (filter.size() >= 3) {
             tv_filter1.setText(filter.get(1));
@@ -69,7 +91,14 @@ public class detailActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        String selectedMonth = intent.getStringExtra("selected_month");
+        int monthIndex = monthList.indexOf(selectedMonth);
+        spinnerMonth.setSelection(monthIndex);
+
     }
+
+
 
 
 }
