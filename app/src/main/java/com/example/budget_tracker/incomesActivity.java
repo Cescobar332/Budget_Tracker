@@ -2,10 +2,14 @@ package com.example.budget_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,8 +19,8 @@ import java.util.List;
 
 public class incomesActivity extends AppCompatActivity {
 
-    EditText etNewCategory;
-    Button btnSave;
+    private EditText etNewCategory;
+    private Button btnSave;
 
     List<String> filter;
     private ArrayAdapter<String> adapter2;
