@@ -3,11 +3,11 @@ package com.example.budget_tracker;
 import com.google.firebase.firestore.Exclude;
 
 public class Usuario {
-
+    @Exclude
     public String getId() {
         return id;
     }
-
+    @Exclude
     public void setId(String id) {
         this.id = id;
     }
