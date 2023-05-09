@@ -25,8 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        referenciar();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        referenciar();
         misPreferencias = getSharedPreferences("tienda_app", MODE_PRIVATE);
         //verificar sí está logueado
         if (misPreferencias.getBoolean("logueado", false)) {
