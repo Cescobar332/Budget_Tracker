@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void CerrarSesion(View view){
+    public void CerrarSesion(View view) {
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();

@@ -57,8 +57,8 @@
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/logout"
-        android:backgroundTint="@color/blue_light"
+        android:background="@drawable/user"
+        android:backgroundTint="@color/blue_dark_opc"
         app:layout_constraintEnd_toStartOf="@+id/et_username_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_login_edittexts" />
@@ -73,7 +73,7 @@
         android:ems="10"
         android:hint="@string/username"
         android:inputType="text"
-        android:textColorHint="@color/blue_light"
+        android:textColorHint="@color/blue_dark_opc"
         app:layout_constraintEnd_toEndOf="@+id/iv_login_edittexts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_login_edittexts" />
@@ -85,7 +85,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/password"
-        android:backgroundTint="@color/blue_light"
+        android:backgroundTint="@color/blue_dark_opc"
         app:layout_constraintEnd_toStartOf="@+id/et_password_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_image_user_login" />
@@ -100,7 +100,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="text|textPassword"
-        android:textColorHint="@color/blue_light"
+        android:textColorHint="@color/blue_dark_opc"
         app:layout_constraintEnd_toEndOf="@+id/iv_login_edittexts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username_login" />
@@ -138,10 +138,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="215dp"
-        android:background="@drawable/shape_border_button_blue"
+        android:background="@drawable/shape_border_button_blue_dark"
         android:onClick="clickRegister"
         android:text="@string/register"
-        android:textColor="@color/blue_light"
+        android:textColor="@color/blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

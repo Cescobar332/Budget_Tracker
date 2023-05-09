@@ -61,4 +61,9 @@
         <item>Work</item>
         <item>Gifts</item>
     </string-array>
+    <string-array name="wallet_array">
+        <item>Home</item>
+        <item>Inversions</item>
+        <item>Travel</item>
+    </string-array>
 </resources>
