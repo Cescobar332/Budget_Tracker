@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnJan, btn_feb, btn_mar, btn_apr, btn_may, btn_jun, btn_jul, btn_ago, btn_sep, btn_oct, btn_nov, btn_dec;
+    private Button btnJan, btnfeb, btnmar, btnapr, btnmay, btnjun, btnjul, btnago, btnsep, btnoct, btnnov, btndec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +18,111 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnJan = findViewById(R.id.btn_jan);
-        btn_feb = findViewById(R.id.btn_feb);
-        btn_mar = findViewById(R.id.btn_mar);
-        btn_apr = findViewById(R.id.btn_apr);
-        btn_may = findViewById(R.id.btn_may);
-        btn_jun = findViewById(R.id.btn_jun);
-        btn_jul = findViewById(R.id.btn_jul);
-        btn_ago = findViewById(R.id.btn_ago);
-        btn_sep = findViewById(R.id.btn_sep);
-        btn_oct = findViewById(R.id.btn_oct);
-        btn_nov = findViewById(R.id.btn_nov);
-        btn_dec = findViewById(R.id.btn_dic);
+        btnfeb = findViewById(R.id.btn_feb);
+        btnmar = findViewById(R.id.btn_mar);
+        btnapr = findViewById(R.id.btn_apr);
+        btnmay = findViewById(R.id.btn_may);
+        btnjun = findViewById(R.id.btn_jun);
+        btnjul = findViewById(R.id.btn_jul);
+        btnago = findViewById(R.id.btn_ago);
+        btnsep = findViewById(R.id.btn_sep);
+        btnoct = findViewById(R.id.btn_oct);
+        btnnov = findViewById(R.id.btn_nov);
+        btndec = findViewById(R.id.btn_dic);
 
+        btnJan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Enero");
+            }
+        });
+
+        btnfeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Febrero");
+            }
+        });
+
+        btnmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Marzo");
+            }
+        });
+
+        btnapr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Abril");
+            }
+        });
+
+        btnmay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Mayo");
+            }
+        });
+
+        btnjun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Junio");
+            }
+        });
+
+        btnjul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Julio");
+            }
+        });
+
+        btnago.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Agosto");
+            }
+        });
+
+        btnsep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Septiembre");
+            }
+        });
+
+        btnoct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Octubre");
+            }
+        });
+
+        btnnov.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Noviembre");
+            }
+        });
+
+        btndec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSpinnerActivity("Diciembre");
+            }
+        });
     }
+
+    private void startSpinnerActivity(String monthName) {
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("MONTH_NAME", monthName);
+        startActivity(intent);
+    }
+
+
+
 
     public void CerrarSesion(View view) {
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
@@ -42,64 +134,5 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void clickEnero (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "January");
-        startActivity(intent);
-    }
-    public void clickFebrero (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "February");
-        startActivity(intent);
-    }
-    public void clickMarzo (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "March");
-        startActivity(intent);
-    }
-    public void clickAbril (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "April");
-        startActivity(intent);
-    }
-    public void clickMayo (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "May");
-        startActivity(intent);
-    }
-    public void clickJunio (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "June");
-        startActivity(intent);
-    }
-    public void clickJulio (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "July");
-        startActivity(intent);
-    }
-    public void clickAgosto (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "August");
-        startActivity(intent);
-    }
-    public void clickSeptiembre (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "September");
-        startActivity(intent);
-    }
-    public void clickOctubre (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "October");
-        startActivity(intent);
-    }
-    public void clickNoviembre (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "November");
-        startActivity(intent);
-    }
-    public void clickDiciembre (View view){
-        Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("selected_month", "December");
-        startActivity(intent);
-    }
+
 }

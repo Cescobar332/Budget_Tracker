@@ -40,26 +40,11 @@ public class detailActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
         mySpinner.setAdapter(adapter);
-        List<String> monthList = new ArrayList<>();
-        monthList.add("January");
-        monthList.add("February");
-        monthList.add("March");
-        monthList.add("April");
-        monthList.add("May");
-        monthList.add("June");
-        monthList.add("July");
-        monthList.add("August");
-        monthList.add("September");
-        monthList.add("October");
-        monthList.add("November");
-        monthList.add("December");
 
+        String monthName = getIntent().getStringExtra("MONTH_NAME");
 
-        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthList);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerMonth.setAdapter(monthAdapter);
-
-
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner2.setAdapter(adapter);
 
         if (filter.size() >= 3) {
             tv_filter1.setText(filter.get(1));
@@ -91,10 +76,6 @@ public class detailActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        String selectedMonth = intent.getStringExtra("selected_month");
-        int monthIndex = monthList.indexOf(selectedMonth);
-        spinnerMonth.setSelection(monthIndex);
 
     }
 
