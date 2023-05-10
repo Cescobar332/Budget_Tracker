@@ -179,6 +179,7 @@
             android:layout_height="30dp"
             android:background="@drawable/shape_rounded_button"
             android:backgroundTint="@color/blue_light"
+            android:onClick="ClickSave"
             android:text="@string/save"
             android:textAppearance="@style/ButtonTextStyle"
             android:textColor="@color/white"
