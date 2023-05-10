@@ -30,103 +30,6 @@ public class MainActivity extends AppCompatActivity {
         btn_nov = findViewById(R.id.btn_nov);
         btn_dec = findViewById(R.id.btn_dic);
 
-        btnJan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "January");
-                startActivity(intent);
-            }
-        });
-        btn_feb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "February");
-                startActivity(intent);
-            }
-        });
-        btn_mar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "March");
-                startActivity(intent);
-            }
-        });
-        btn_apr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "April");
-                startActivity(intent);
-            }
-        });
-        btn_may.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "May");
-                startActivity(intent);
-            }
-        });
-        btn_jun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "June");
-                startActivity(intent);
-            }
-        });
-        btn_jul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "July");
-                startActivity(intent);
-            }
-        });
-        btn_ago.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "August");
-                startActivity(intent);
-            }
-        });
-        btn_sep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "September");
-                startActivity(intent);
-            }
-        });
-        btn_oct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "October");
-                startActivity(intent);
-            }
-        });
-        btn_nov.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "November");
-                startActivity(intent);
-            }
-        });
-        btn_dec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, detailActivity.class);
-                intent.putExtra("selected_month", "December");
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void CerrarSesion(View view) {
@@ -139,6 +42,64 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-
-
+    public void clickEnero (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "January");
+        startActivity(intent);
+    }
+    public void clickFebrero (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "February");
+        startActivity(intent);
+    }
+    public void clickMarzo (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "March");
+        startActivity(intent);
+    }
+    public void clickAbril (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "April");
+        startActivity(intent);
+    }
+    public void clickMayo (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "May");
+        startActivity(intent);
+    }
+    public void clickJunio (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "June");
+        startActivity(intent);
+    }
+    public void clickJulio (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "July");
+        startActivity(intent);
+    }
+    public void clickAgosto (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "August");
+        startActivity(intent);
+    }
+    public void clickSeptiembre (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "September");
+        startActivity(intent);
+    }
+    public void clickOctubre (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "October");
+        startActivity(intent);
+    }
+    public void clickNoviembre (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "November");
+        startActivity(intent);
+    }
+    public void clickDiciembre (View view){
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("selected_month", "December");
+        startActivity(intent);
+    }
 }
