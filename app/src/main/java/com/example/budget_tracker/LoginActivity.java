@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         String userUSer = etUser.getText().toString();
         if (PASS.equals(passUser) && USER.equals(userUSer)) {
             SharedPreferences.Editor myEditor = misPreferencias.edit();
-            Intent myIntent = new Intent(this, MainActivity.class);
+            Intent myIntent = new Intent(this, BolsillosActivity.class);
             startActivity(myIntent);
             finish();
             myEditor.putBoolean("logueado", true);
