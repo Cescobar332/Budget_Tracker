@@ -13,8 +13,10 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_button_circle"
         android:backgroundTint="@color/purple_dark"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="T"
         android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +50,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/shape_button_circle"
         android:backgroundTint="@color/purple_dark"
+        android:padding="10dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         //verificar sí está logueado
         if (misPreferencias.getBoolean("logueado", false)) {
-            Intent myIntent = new Intent(this, MainActivity.class);
+            Intent myIntent = new Intent(this, BolsillosActivity.class);
             startActivity(myIntent);
             finish();
         }
