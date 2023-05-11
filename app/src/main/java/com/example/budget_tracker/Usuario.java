@@ -1,47 +1,51 @@
 package com.example.budget_tracker;
 
 import com.google.firebase.firestore.Exclude;
+import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
+
+
+    private long id_usuario;
+    @SerializedName("nombre")
+    private String usuario;
+    private String contrasena;
+    private String correo;
+
+    public Usuario() {
+    }
+
     @Exclude
-    public String getId() {
-        return id;
+    public long getId_usuario() {
+        return id_usuario;
     }
+
     @Exclude
-    public void setId(String id) {
-        this.id = id;
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
-    private String id;
-    private String user;
-    private String password;
-    private String email;
-
-    public Usuario (){
-
+    public String getUsuario() {
+        return usuario;
     }
 
-    public String getUser() {
-        return user;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public String getPassword() {
-        return password;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getCorreo() {
+        return correo;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }
