@@ -46,6 +46,7 @@
     <string name="new_wallet">New wallet</string>
     <string name="wallet_name">Wallet\'s name</string>
     <string name="wallet">Wallet</string>
+    <string name="wallets_mount">Wallet\'s mount</string>
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>

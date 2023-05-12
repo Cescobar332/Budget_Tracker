@@ -144,7 +144,7 @@
         <TextView
             android:id="@+id/tv_background_bolsillos"
             android:layout_width="320dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_marginStart="55dp"
             android:layout_marginTop="200dp"
             android:layout_marginEnd="55dp"
@@ -162,6 +162,7 @@
             android:id="@+id/et_new_wallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:background="@drawable/shape_border_button"
             android:elevation="150dp"
             android:ems="10"
@@ -170,18 +171,34 @@
             android:padding="10dp"
             android:textColor="@color/purple_dark"
             android:textColorHint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_background_bolsillos"
             app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
-            app:layout_constraintTop_toTopOf="@+id/tv_background_bolsillos"
-            app:layout_constraintVertical_bias="0.522" />
+            app:layout_constraintTop_toTopOf="@+id/tv_background_bolsillos" />
+
+        <EditText
+            android:id="@+id/et_new_wallet_mount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_border_button"
+            android:elevation="150dp"
+            android:ems="10"
+            android:hint="@string/wallets_mount"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/purple_dark"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
+            app:layout_constraintTop_toBottomOf="@+id/et_new_wallet" />
 
         <Button
             android:id="@+id/btn_save_bolsillos"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/shape_rounded_button"
             android:backgroundTint="@color/purple_dark"
             android:onClick="AgregarBolsillo"
@@ -191,7 +208,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
             app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_wallet" />
+            app:layout_constraintTop_toBottomOf="@+id/et_new_wallet_mount" />
 
         <TextView
             android:id="@+id/textView7"
