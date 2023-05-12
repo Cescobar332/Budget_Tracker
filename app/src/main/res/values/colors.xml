@@ -18,4 +18,5 @@
     <color name="blue_l9opacity">#E64FB0C6</color>
     <color name="blue_l7opacity">#B34FB0C6</color>
     <color name="blue_l5opacity">#804FB0C6</color>
+    <color name="black_opc">#6B000000</color>
 </resources>

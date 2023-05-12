@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         cargarData();
         //verificar sí está logueado
         if (misPreferencias.getBoolean("logueado", false)) {
-            Intent myIntent = new Intent(this, MainActivity.class);
+            Intent myIntent = new Intent(this, BolsillosActivity.class);
             startActivity(myIntent);
             finish();
         }
@@ -68,8 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         String passUser = etPassword.getText().toString();
         String userUSer = etUser.getText().toString();
         if (PASS.equals(passUser) && USER.equals(userUSer)) {
+            String bolsillo_id = getIntent().getStringExtra("bolsillo_id");
             SharedPreferences.Editor myEditor = misPreferencias.edit();
-            Intent myIntent = new Intent(this, MainActivity.class);
+            Intent myIntent = new Intent(this, BolsillosActivity.class);
+            myIntent.putExtra("bolsillo_id", bolsillo_id);
             startActivity(myIntent);
             finish();
             myEditor.putBoolean("logueado", true);
