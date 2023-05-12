@@ -5,7 +5,7 @@ import com.google.firebase.firestore.Exclude;
 import java.io.Serializable;
 
 public class Bolsillo implements Serializable {
-    private String id;
+    private String id = "1";
 
     public Bolsillo(String sigla, String nombre, Double monto) {
         this.sigla = sigla;

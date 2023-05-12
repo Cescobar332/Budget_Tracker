@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,12 +23,15 @@ import java.util.ArrayList;
 public class BolsillosActivity extends AppCompatActivity {
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
     private RecyclerView rvListadoBolsillos;
+    private EditText etNombreBolsillo;
+    private String idBolsillo;
     AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsillos);
-
+        etNombreBolsillo = findViewById(R.id.et_new_wallet);
+        idBolsillo = getIntent().getStringExtra("bolsillo_id");
         rvListadoBolsillos =findViewById(R.id.rv_listado_bolsillos);
 
         miAdaptador.setOnItemClickListener(new AdaptadorPersonalizado.OnItemClickListener() {
@@ -49,6 +53,8 @@ public class BolsillosActivity extends AppCompatActivity {
         });
         rvListadoBolsillos.setAdapter(miAdaptador);
         rvListadoBolsillos.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     @Override
@@ -65,6 +71,7 @@ public class BolsillosActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot document : task.getResult()){
                         Bolsillo bolsilloAtrapado = document.toObject(Bolsillo.class);
+                        assert bolsilloAtrapado != null;
                         bolsilloAtrapado.setId(document.getId());
                         listaPrincipalBolsillos.add(bolsilloAtrapado);
                     }
@@ -76,8 +83,25 @@ public class BolsillosActivity extends AppCompatActivity {
         });
     }
     public void AgregarBolsillo(View view) {
-        return;
+        String nombre = etNombreBolsillo.getText().toString();
+        Bolsillo nuevoBolsillo = new Bolsillo();
+        nuevoBolsillo.setNombre(nombre);
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("bolsillos").add(nuevoBolsillo)
+                .addOnSuccessListener(documentReference -> {
+                    String bolsilloId = documentReference.getId();
+                    nuevoBolsillo.setId(bolsilloId);
+                    listaPrincipalBolsillos.add(nuevoBolsillo);
+                    miAdaptador.setListadoInformacion(listaPrincipalBolsillos);
+
+                    Toast.makeText(this, "Bolsillo agregado con éxito", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al agregar el bolsillo", Toast.LENGTH_SHORT).show();
+                });
     }
+
     public void CerrarSesion(View view){
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         SharedPreferences.Editor miEditor = misPreferencias.edit();
