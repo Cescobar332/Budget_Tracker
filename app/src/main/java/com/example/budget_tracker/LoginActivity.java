@@ -21,13 +21,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUser, etPassword;
     private SharedPreferences misPreferencias;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
         referenciar();
+
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        cargarData();
         //verificar sí está logueado
         if (misPreferencias.getBoolean("logueado", false)) {
             Intent myIntent = new Intent(this, MainActivity.class);
@@ -36,15 +40,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-/*    public void cargarData() {
+    public void cargarData() {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        firestore.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("usuario").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot document : task.getResult()) {
-
                         Usuario user = document.toObject(Usuario.class);
                         user.setId(document.getId());
                     }
@@ -53,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }*/
+    }
     private void referenciar() {
         etUser = findViewById(R.id.et_username_login);
         etPassword = findViewById(R.id.et_password_login);

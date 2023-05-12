@@ -5,8 +5,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
 
+    @Exclude
+    public String getId() {
+        return id;
+    }
 
-    private long id_usuario;
+    @Exclude
+    public void setId(String id) {
+        this.id = id;
+    }
+    private String id;
     @SerializedName("nombre")
     private String usuario;
     private String contrasena;
@@ -14,15 +22,10 @@ public class Usuario {
 
     public Usuario() {
     }
-
-    @Exclude
-    public long getId_usuario() {
-        return id_usuario;
-    }
-
-    @Exclude
-    public void setId_usuario(long id_usuario) {
-        this.id_usuario = id_usuario;
+    public Usuario(String usuario, String contrasena, String correo){
+        this.usuario=usuario;
+        this.contrasena=contrasena;
+        this.correo=correo;
     }
 
     public String getUsuario() {
