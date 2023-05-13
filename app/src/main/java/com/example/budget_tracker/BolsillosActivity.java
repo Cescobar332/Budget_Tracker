@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class BolsillosActivity extends AppCompatActivity {
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
     private RecyclerView rvListadoBolsillos;
-    private EditText etNombreBolsillo;
+    private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
     AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
     @Override
@@ -31,6 +31,7 @@ public class BolsillosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsillos);
         etNombreBolsillo = findViewById(R.id.et_new_wallet);
+        etMontoBolsillo = findViewById(R.id.et_new_wallet_mount);
         idBolsillo = getIntent().getStringExtra("bolsillo_id");
         rvListadoBolsillos =findViewById(R.id.rv_listado_bolsillos);
 
@@ -82,10 +83,27 @@ public class BolsillosActivity extends AppCompatActivity {
             }
         });
     }
+    private String obtenerSiglaNombre(String nombreBolsillo) {
+        StringBuilder sigla = new StringBuilder();
+        String[] palabras = nombreBolsillo.split(" ");
+
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                sigla.append(Character.toUpperCase(palabra.charAt(0)));
+            }
+        }
+
+        return sigla.toString();
+    }
+
     public void AgregarBolsillo(View view) {
         String nombre = etNombreBolsillo.getText().toString();
+        Double monto =  Double.parseDouble(etMontoBolsillo.getText().toString());
+        String siglaNombre = obtenerSiglaNombre(nombre);
         Bolsillo nuevoBolsillo = new Bolsillo();
         nuevoBolsillo.setNombre(nombre);
+        nuevoBolsillo.setSigla(siglaNombre);
+        nuevoBolsillo.setMonto(monto);
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("bolsillos").add(nuevoBolsillo)
