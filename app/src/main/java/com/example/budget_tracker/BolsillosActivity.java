@@ -118,6 +118,9 @@ public class BolsillosActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error al agregar el bolsillo", Toast.LENGTH_SHORT).show();
                 });
+        etNombreBolsillo.setText("");
+        etMontoBolsillo.setText("");
+        etMontoBolsillo.clearFocus();
     }
 
     public void CerrarSesion(View view){
