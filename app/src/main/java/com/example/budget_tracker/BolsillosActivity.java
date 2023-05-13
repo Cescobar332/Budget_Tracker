@@ -129,4 +129,7 @@ public class BolsillosActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+    public void NewWallet(View view){
+        etNombreBolsillo.requestFocus();
+    }
 }
