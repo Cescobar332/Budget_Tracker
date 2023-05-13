@@ -230,6 +230,7 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/shape_button_circle"
             android:backgroundTint="@color/purple_dark"
+            android:onClick="NewWallet"
             android:text="@string/plus"
             android:textColor="@color/white"
             android:textSize="34sp"
