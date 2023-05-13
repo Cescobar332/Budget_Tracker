@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,6 +19,14 @@ import java.util.List;
 
 public class expensesActivity extends AppCompatActivity {
 
+    private EditText etNewCategory;
+    private Button btnSave;
+
+    List<String> filter;
+    private ArrayAdapter<String> adapter2;
+
+    Spinner mySpinner2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +34,12 @@ public class expensesActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter11);
         TextView tv_filter2 = findViewById(R.id.tv_filter22);
         TextView tv_filter3 = findViewById(R.id.tv_filter33);
-
-        Spinner mySpinner2 = findViewById(R.id.my_spinner_expenses);
+        etNewCategory = findViewById(R.id.et_new_category);
+        btnSave = findViewById(R.id.btn_save);
+        mySpinner2 = findViewById(R.id.my_spinner_expenses);
         String[] filterArray = getResources().getStringArray(R.array.filter_array);
-        List<String> filter = new ArrayList<>(Arrays.asList(filterArray));
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
+        filter = new ArrayList<>(Arrays.asList(filterArray));
+        adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
 
@@ -57,8 +68,15 @@ public class expensesActivity extends AppCompatActivity {
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();
         miEditor.apply();
-
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    public void ClickSave (View view){
+        String cat = etNewCategory.getText().toString();
+        filter.add(cat);
+        ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
+        adapter2.notifyDataSetChanged();
+        etNewCategory.setText("");
     }
 }
