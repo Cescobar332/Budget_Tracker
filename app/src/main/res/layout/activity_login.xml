@@ -71,7 +71,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_border_button"
         android:ems="10"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:inputType="text"
         android:textColorHint="@color/blue_dark_opc"
         app:layout_constraintEnd_toEndOf="@+id/iv_login_edittexts"
