@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -20,31 +23,28 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etUser, etPassword;
     private SharedPreferences misPreferencias;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         referenciar();
+
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
-        //verificar sí está logueado
-        if (misPreferencias.getBoolean("logueado", false)) {
-            Intent myIntent = new Intent(this, MainActivity.class);
-            startActivity(myIntent);
-            finish();
-        }
+        cargarData();
     }
 
-/*    public void cargarData() {
+    public void cargarData() {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        firestore.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("usuario").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot document : task.getResult()) {
-
                         Usuario user = document.toObject(Usuario.class);
                         user.setId(document.getId());
                     }
@@ -53,31 +53,39 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }*/
+    }
     private void referenciar() {
         etUser = findViewById(R.id.et_username_login);
         etPassword = findViewById(R.id.et_password_login);
+
     }
 
     public void clickIniciarSesion(View view) {
-        String PASS = "123456";
-        String USER = "Camila";
-        String passUser = etPassword.getText().toString();
-        String userUSer = etUser.getText().toString();
-        if (PASS.equals(passUser) && USER.equals(userUSer)) {
-            SharedPreferences.Editor myEditor = misPreferencias.edit();
-            Intent myIntent = new Intent(this, MainActivity.class);
-            startActivity(myIntent);
-            finish();
-            myEditor.putBoolean("logueado", true);
-            myEditor.apply();
-        } else {
-            Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
-        }
+        String email = etUser.getText().toString();
+        String password = etPassword.getText().toString();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            SharedPreferences.Editor editor = misPreferencias.edit();
+                            editor.putBoolean("logueado", true);
+                            editor.apply();
+                            Intent intent = new Intent(LoginActivity.this, BolsillosActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
-    public void clickRegister (View view){
-        startActivity(new Intent(this, RegisterActivity.class));
+    public void clickRegister(View view) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
+
 
 }

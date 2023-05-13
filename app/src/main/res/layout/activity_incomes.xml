@@ -15,6 +15,7 @@
         android:layout_marginEnd="23dp"
         android:background="@drawable/logout"
         android:backgroundTint="@color/purple_dark"
+        android:onClick="CerrarSesion"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -146,13 +147,14 @@
             android:layout_width="320dp"
             android:layout_height="180dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="55dp"
             android:background="@drawable/shape_rounded_button"
             android:padding="20dp"
             android:text="@string/new_cat"
             android:textColor="@color/purple_dark"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_filter1111" />
 
@@ -170,8 +172,10 @@
             android:textColorHint="@color/purple_op"
             app:layout_constraintBottom_toBottomOf="@+id/background"
             app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="@+id/background"
-            app:layout_constraintTop_toTopOf="@+id/background" />
+            app:layout_constraintTop_toTopOf="@+id/background"
+            app:layout_constraintVertical_bias="0.522" />
 
         <Button
             android:id="@+id/btn_save"
@@ -179,6 +183,7 @@
             android:layout_height="30dp"
             android:background="@drawable/shape_rounded_button"
             android:backgroundTint="@color/purple_dark"
+            android:onClick="clickSave"
             android:text="@string/save"
             android:textAppearance="@style/ButtonTextStyle"
             android:textColor="@color/white"

@@ -14,6 +14,7 @@
         android:layout_marginEnd="23dp"
         android:background="@drawable/logout"
         android:backgroundTint="@color/blue_light"
+        android:onClick="CerrarSesion"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -178,6 +179,7 @@
             android:layout_height="30dp"
             android:background="@drawable/shape_rounded_button"
             android:backgroundTint="@color/blue_light"
+            android:onClick="ClickSave"
             android:text="@string/save"
             android:textAppearance="@style/ButtonTextStyle"
             android:textColor="@color/white"
