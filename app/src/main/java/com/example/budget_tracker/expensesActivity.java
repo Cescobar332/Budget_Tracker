@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,13 +22,18 @@ import java.util.List;
 
 public class expensesActivity extends AppCompatActivity {
 
-    private EditText etNewCategory;
-    private Button btnSave;
+    private EditText etNewCategory, etDetail, etValueExpenses;
+    private Button btnSave, btnDone;
 
     List<String> filter;
     private ArrayAdapter<String> adapter2;
 
+    String selectedOption;
     Spinner mySpinner2;
+
+    TextView tvExpenses;
+
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,10 @@ public class expensesActivity extends AppCompatActivity {
         TextView tv_filter2 = findViewById(R.id.tv_filter22);
         TextView tv_filter3 = findViewById(R.id.tv_filter33);
         etNewCategory = findViewById(R.id.et_new_category);
+        etDetail = findViewById(R.id.et_detail);
+        etValueExpenses = findViewById(R.id.et_value_expenses);
         btnSave = findViewById(R.id.btn_save);
+        btnDone = findViewById(R.id.btn_done);
         mySpinner2 = findViewById(R.id.my_spinner_expenses);
         String[] filterArray = getResources().getStringArray(R.array.filter_array);
         filter = new ArrayList<>(Arrays.asList(filterArray));
@@ -52,7 +63,7 @@ public class expensesActivity extends AppCompatActivity {
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = filter.get(position);
+                selectedOption = filter.get(position);
 
             }
 
@@ -78,5 +89,15 @@ public class expensesActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
         etNewCategory.setText("");
+    }
+
+    public void ClickDone (View view){
+        String tipo = tvExpenses.getText().toString();
+        String categoria = selectedOption;
+        Integer valor = Integer.parseInt(etValueExpenses.getText().toString());
+        String descripcion = etDetail.getText().toString();
+        Expense expense = new Expense(tipo,categoria,valor,descripcion);
+        firestore.collection("expenses").add(expense);
+        Toast.makeText(this, "Se creo el expense", Toast.LENGTH_SHORT).show();
     }
 }
