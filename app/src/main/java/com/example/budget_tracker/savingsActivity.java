@@ -90,6 +90,8 @@ public class savingsActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
+        Category category = new Category(cat);
+        firestore.collection("categorias").add(category);
         etNewCategory.setText("");
     }
 
@@ -99,6 +101,10 @@ public class savingsActivity extends AppCompatActivity {
         Integer valor = Integer.parseInt(etValue2.getText().toString());
         String descripcion = etDetail.getText().toString();
         Saving saving = new Saving(tipo,categoria,valor,descripcion);
+        saving.setCategory(categoria);
+        saving.setType(tipo);
+        saving.setDetail(descripcion);
+        saving.setValue(valor);
         firestore.collection("savings").add(saving);
         Toast.makeText(this, "Se creo el saving", Toast.LENGTH_SHORT).show();
     }

@@ -88,6 +88,8 @@ public class expensesActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
+        Category category = new Category(cat);
+        firestore.collection("categorias").add(category);
         etNewCategory.setText("");
     }
 
@@ -97,6 +99,10 @@ public class expensesActivity extends AppCompatActivity {
         Integer valor = Integer.parseInt(etValueExpenses.getText().toString());
         String descripcion = etDetail.getText().toString();
         Expense expense = new Expense(tipo,categoria,valor,descripcion);
+        expense.setCategory(categoria);
+        expense.setType(tipo);
+        expense.setDetail(descripcion);
+        expense.setValue(valor);
         firestore.collection("expenses").add(expense);
         Toast.makeText(this, "Se creo el expense", Toast.LENGTH_SHORT).show();
     }

@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class incomesActivity extends AppCompatActivity {
 
@@ -89,6 +90,8 @@ public class incomesActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
+        Category category = new Category(cat);
+        firestore.collection("categorias").add(category);
         etNewCategory.setText("");
     }
     public void ClickDone (View view){
@@ -97,6 +100,10 @@ public class incomesActivity extends AppCompatActivity {
         Integer valor = Integer.parseInt(etValueIncomes.getText().toString());
         String descripcion = etDetail.getText().toString();
         Income income = new Income(tipo,categoria,valor,descripcion);
+        income.setCategory(categoria);
+        income.setType(tipo);
+        income.setDetail(descripcion);
+        income.setValue(valor);
         firestore.collection("incomes").add(income);
         Toast.makeText(this, "Se creo el income", Toast.LENGTH_SHORT).show();
     }
