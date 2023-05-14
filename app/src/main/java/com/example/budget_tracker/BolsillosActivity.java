@@ -14,11 +14,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BolsillosActivity extends AppCompatActivity {
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
@@ -97,6 +100,9 @@ public class BolsillosActivity extends AppCompatActivity {
     }
 
     public void AgregarBolsillo(View view) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
         String nombre = etNombreBolsillo.getText().toString();
         Double monto =  Double.parseDouble(etMontoBolsillo.getText().toString());
         String siglaNombre = obtenerSiglaNombre(nombre);

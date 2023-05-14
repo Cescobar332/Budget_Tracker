@@ -3,11 +3,11 @@ package com.example.budget_tracker;
 public class Saving {
     private String type;
     private String detail;
-    private Integer value;
+    private Double value;
     private String category;
 
 
-    public Saving(String type, String category, Integer value, String detail) {
+    public Saving(String type, String category, Double value, String detail) {
     }
 
     public String getDetail() {
@@ -18,11 +18,11 @@ public class Saving {
         this.detail = detail;
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

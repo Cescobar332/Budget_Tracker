@@ -23,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-        android:layout_marginEnd="2dp"
         android:text="@string/tv_balance"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_signo_dolar1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/tv_num_balance_overview"
@@ -38,17 +37,6 @@
         android:textSize="28dp"
         app:layout_constraintEnd_toStartOf="@+id/tv_balance_overview"
         app:layout_constraintStart_toStartOf="@+id/tv_balance_overview"
-        app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
-
-    <TextView
-        android:id="@+id/tv_signo_dolar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="2dp"
-        android:text="@string/signo_dinero"
-        android:textSize="28dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
 
     <TextView
@@ -72,17 +60,6 @@
         app:layout_constraintEnd_toStartOf="@+id/pb_income_overview"
         app:layout_constraintStart_toStartOf="@+id/pb_income_overview" />
 
-    <TextView
-        android:id="@+id/tv_signo_dolar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="11dp"
-        android:text="@string/signo_dinero"
-        android:textColor="@color/purple_dark"
-        app:layout_constraintBottom_toTopOf="@+id/pb_income_overview"
-        app:layout_constraintEnd_toEndOf="@+id/pb_income_overview" />
-
     <ImageView
         android:id="@+id/iv_incomes_overview"
         android:layout_width="35dp"
@@ -101,13 +78,11 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginTop="72dp"
         android:layout_marginBottom="72dp"
         android:progressTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="@+id/tv_categoria_expenses_overview"
         app:layout_constraintEnd_toEndOf="@+id/pb_expenses_overview"
-        app:layout_constraintStart_toStartOf="@+id/pb_expenses_overview"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signo_dolar1" />
+        app:layout_constraintStart_toStartOf="@+id/pb_expenses_overview" />
 
     <TextView
         android:id="@+id/tv_categoria_incomes_overview"
@@ -138,17 +113,6 @@
         app:layout_constraintEnd_toStartOf="@+id/pb_income_overview"
         app:layout_constraintStart_toStartOf="@+id/pb_income_overview"
         app:layout_constraintTop_toBottomOf="@+id/pb_income_overview" />
-
-    <TextView
-        android:id="@+id/tv_signo_dolar3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/signo_dinero"
-        android:textColor="@color/blue_dark"
-        app:layout_constraintBottom_toTopOf="@+id/pb_expenses_overview"
-        app:layout_constraintEnd_toEndOf="@+id/pb_expenses_overview" />
 
     <ImageView
         android:id="@+id/iv_expenses_overview"
@@ -203,17 +167,6 @@
         android:textColor="@color/blue_dark"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_savings_overview"
         app:layout_constraintStart_toStartOf="@+id/pb_savings_overview" />
-
-    <TextView
-        android:id="@+id/tv_signo_dolar4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="11dp"
-        android:text="@string/signo_dinero"
-        android:textColor="@color/green_dark"
-        app:layout_constraintBottom_toTopOf="@+id/pb_savings_overview"
-        app:layout_constraintEnd_toEndOf="@+id/pb_savings_overview" />
 
     <ImageView
         android:id="@+id/iv_savings_overview"

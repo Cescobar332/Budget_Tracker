@@ -2,10 +2,11 @@ package com.example.budget_tracker;
 
 public class Category {
     private String nombre;
-    private  Integer monto;
+    private Double montosav;
+    private Double montoexp;
+    private Double montoinc;
 
-    public Category(String nombre, Integer monto) {
-
+    public Category() {
     }
 
     public String getNombre() {
@@ -16,11 +17,27 @@ public class Category {
         this.nombre = nombre;
     }
 
-    public Integer getMonto() {
-        return monto;
+    public Double getMontosav() {
+        return montosav;
     }
 
-    public void setMonto(Integer monto) {
-        this.monto = monto;
+    public void setMontosav(Double montosav) {
+        this.montosav = montosav;
+    }
+
+    public Double getMontoexp() {
+        return montoexp;
+    }
+
+    public void setMontoexp(Double montoexp) {
+        this.montoexp = montoexp;
+    }
+
+    public Double getMontoinc() {
+        return montoinc;
+    }
+
+    public void setMontoinc(Double montoinc) {
+        this.montoinc = montoinc;
     }
 }

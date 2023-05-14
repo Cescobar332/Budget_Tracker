@@ -42,9 +42,9 @@ public class detailActivity extends AppCompatActivity {
         mySpinner.setAdapter(adapter);
 
         if (filter.size() >= 3) {
-            tv_filter1.setText(filter.get(1));
-            tv_filter2.setText(filter.get(2));
-            tv_filter3.setText(filter.get(3));
+            tv_filter1.setText(filter.get(0));
+            tv_filter2.setText(filter.get(1));
+            tv_filter3.setText(filter.get(2));
         }
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
