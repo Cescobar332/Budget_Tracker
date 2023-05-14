@@ -184,7 +184,7 @@
             android:background="@drawable/shape_border_button"
             android:elevation="150dp"
             android:ems="10"
-            android:hint="@string/wallets_mount"
+            android:hint="@string/wallets_amount"
             android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/purple_dark"
