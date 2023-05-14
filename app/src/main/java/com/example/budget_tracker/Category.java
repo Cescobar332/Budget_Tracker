@@ -2,9 +2,9 @@ package com.example.budget_tracker;
 
 public class Category {
     private String nombre;
-    private  Integer monto;
+    private Double monto;
 
-    public Category(String nombre, Integer monto) {
+    public Category(String nombre, Double monto) {
 
     }
 
@@ -16,11 +16,11 @@ public class Category {
         this.nombre = nombre;
     }
 
-    public Integer getMonto() {
+    public Double getMonto() {
         return monto;
     }
 
-    public void setMonto(Integer monto) {
+    public void setMonto(Double monto) {
         this.monto = monto;
     }
 }

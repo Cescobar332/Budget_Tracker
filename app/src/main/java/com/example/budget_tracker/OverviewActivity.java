@@ -22,22 +22,22 @@ public class OverviewActivity extends AppCompatActivity {
         tvCatExpenses = findViewById(R.id.tv_categoria_expenses_overview);
         tvCatSavings = findViewById(R.id.tv_categoria_savings_overview);
 
-        Incomes miIncomesAtrapado = (Incomes) getIntent().getSerializableExtra("income");
+        Income miIncomesAtrapado = (Income) getIntent().getSerializableExtra("income");
 
-        tvIncomes.setText("$" + miIncomesAtrapado.getMonto().toString());
-        tvCatIncomes.setText(miIncomesAtrapado.getCat());
+        tvIncomes.setText("$" + miIncomesAtrapado.getValue().toString());
+        tvCatIncomes.setText(miIncomesAtrapado.getCategory());
 
-        Expenses miExpensesAtrapado = (Expenses) getIntent().getSerializableExtra("expense");
+        Expense miExpensesAtrapado = (Expense) getIntent().getSerializableExtra("expense");
 
-        tvExpenses.setText("$" + miExpensesAtrapado.getMonto().toString);
-        tvCatExpenses.setText(miExpensesAtrapado.getCat());
+        tvExpenses.setText("$" + miExpensesAtrapado.getValue().toString());
+        tvCatExpenses.setText(miExpensesAtrapado.getCategory());
 
-        Savings miSavingsAtrapado = (Savings) getIntent().getSerializableExtra("saving");
+        Saving miSavingsAtrapado = (Saving) getIntent().getSerializableExtra("saving");
 
-        tvSavings.setText("$" + miSavingsAtrapado.getMonto().toString());
-        tvCatSavings.setText(miSavingsAtrapado.getCat());
+        tvSavings.setText("$" + miSavingsAtrapado.getValue().toString());
+        tvCatSavings.setText(miSavingsAtrapado.getCategory());
 
-        Double resultado = miIncomesAtrapado.getMonto() - (miExpensesAtrapado.getMonto() + miSavingsAtrapado.getMonto());
+        Double resultado = miIncomesAtrapado.getValue() - (miExpensesAtrapado.getValue() + miSavingsAtrapado.getValue());
         tvBalance.setText(resultado.toString());
 //        Obtén los datos de ingresos
 //        double ingresosCategoria1 = 75.0;

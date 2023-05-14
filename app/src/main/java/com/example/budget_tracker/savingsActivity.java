@@ -90,7 +90,7 @@ public class savingsActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Integer val = Integer.parseInt(etValue2.getText().toString());
+        Double val = Double.parseDouble(etValue2.getText().toString());
         Category category = new Category(cat, val);
         category.setMonto(val);
         category.setNombre(cat);
@@ -101,7 +101,7 @@ public class savingsActivity extends AppCompatActivity {
     public void ClickDone (View view){
         String tipo = tvSavings.getText().toString();
         String categoria = selectedOption;
-        Integer valor = Integer.parseInt(etValue2.getText().toString());
+        Double valor = Double.parseDouble(etValue2.getText().toString());
         String descripcion = etDetail.getText().toString();
         Saving saving = new Saving(tipo,categoria,valor,descripcion);
         saving.setCategory(categoria);

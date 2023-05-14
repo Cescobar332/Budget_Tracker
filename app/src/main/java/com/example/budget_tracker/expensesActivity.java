@@ -88,7 +88,7 @@ public class expensesActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Integer val = Integer.parseInt(etValueExpenses.getText().toString());
+        Double val = Double.parseDouble(etValueExpenses.getText().toString());
         Category category = new Category(cat, val);
         category.setMonto(val);
         category.setNombre(cat);
@@ -99,7 +99,7 @@ public class expensesActivity extends AppCompatActivity {
     public void ClickDone (View view){
         String tipo = tvExpenses.getText().toString();
         String categoria = selectedOption;
-        Integer valor = Integer.parseInt(etValueExpenses.getText().toString());
+        Double valor = Double.parseDouble(etValueExpenses.getText().toString());
         String descripcion = etDetail.getText().toString();
         Expense expense = new Expense(tipo,categoria,valor,descripcion);
         expense.setCategory(categoria);

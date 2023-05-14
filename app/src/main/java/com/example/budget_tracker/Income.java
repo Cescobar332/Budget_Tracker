@@ -3,10 +3,10 @@ package com.example.budget_tracker;
 public class Income {
     private String type;
     private String detail;
-    private Integer value;
+    private Double value;
     private String category;
 
-    public Income(String type, String detail, Integer value, String category) {
+    public Income(String type, String detail, Double value, String category) {
     }
 
     public String getType() {
@@ -25,11 +25,11 @@ public class Income {
         this.detail = detail;
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

@@ -90,7 +90,7 @@ public class incomesActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Integer val = Integer.parseInt(etValueIncomes.getText().toString());
+        Double val = Double.parseDouble(etValueIncomes.getText().toString());
         Category category = new Category(cat, val);
         category.setMonto(val);
         category.setNombre(cat);
@@ -99,7 +99,7 @@ public class incomesActivity extends AppCompatActivity {
     public void ClickDone (View view){
         String tipo = tvIncomes.getText().toString();
         String categoria = selectedOption;
-        Integer valor = Integer.parseInt(etValueIncomes.getText().toString());
+        Double valor = Double.parseDouble(etValueIncomes.getText().toString());
         String descripcion = etDetail.getText().toString();
         Income income = new Income(tipo,categoria,valor,descripcion);
         income.setCategory(categoria);
