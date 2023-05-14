@@ -90,7 +90,10 @@ public class savingsActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Category category = new Category(cat);
+        Integer val = Integer.parseInt(etValue2.getText().toString());
+        Category category = new Category(cat, val);
+        category.setMonto(val);
+        category.setNombre(cat);
         firestore.collection("categorias").add(category);
         etNewCategory.setText("");
     }

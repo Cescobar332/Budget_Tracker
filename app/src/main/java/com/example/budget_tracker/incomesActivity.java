@@ -90,8 +90,10 @@ public class incomesActivity extends AppCompatActivity {
         filter.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Category category = new Category(cat);
-        firestore.collection("categorias").add(category);
+        Integer val = Integer.parseInt(etValueIncomes.getText().toString());
+        Category category = new Category(cat, val);
+        category.setMonto(val);
+        category.setNombre(cat);
         etNewCategory.setText("");
     }
     public void ClickDone (View view){
