@@ -35,12 +35,6 @@ public class LoginActivity extends AppCompatActivity {
 
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         cargarData();
-        //verificar sí está logueado
-        if (misPreferencias.getBoolean("logueado", false)) {
-            Intent myIntent = new Intent(this, BolsillosActivity.class);
-            startActivity(myIntent);
-            finish();
-        }
     }
 
     public void cargarData() {
@@ -76,6 +70,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
+                            SharedPreferences.Editor editor = misPreferencias.edit();
+                            editor.putBoolean("logueado", true);
+                            editor.apply();
                             Intent intent = new Intent(LoginActivity.this, BolsillosActivity.class);
                             startActivity(intent);
                         } else {
