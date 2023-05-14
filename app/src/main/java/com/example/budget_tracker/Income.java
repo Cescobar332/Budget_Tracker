@@ -6,7 +6,7 @@ public class Income {
     private Double value;
     private String category;
 
-    public Income(String type, String detail, Double value, String category) {
+    public Income() {
     }
 
     public String getType() {
