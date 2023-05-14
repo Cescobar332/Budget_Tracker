@@ -51,7 +51,6 @@ public class detailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedOption = options.get(position);
-                // Lógica para cuando se selecciona una opción del spinner
             }
 
             @Override
@@ -83,6 +82,11 @@ public class detailActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+    public void clickOverview (View view){
+        Intent intent = new Intent(detailActivity.this, OverviewActivity.class);
+        //intent.putExtra("myIncome");
+        startActivity(intent);
     }
 
 

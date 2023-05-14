@@ -6,13 +6,32 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button btnJan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btnJan = findViewById(R.id.btn_jan);
+        btnJan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickMes(view);
+            }
+        });
+
+
+    }
+    public void clickMes (View view){
+        Button clickedButton = (Button) view;
+        String month = clickedButton.getText().toString();
+        Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("month",month);
+        startActivity(intent);
     }
 
     public void CerrarSesion(View view) {

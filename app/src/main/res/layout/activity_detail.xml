@@ -264,6 +264,7 @@
         android:layout_marginEnd="159dp"
         android:background="@drawable/shape_rounded_button"
         android:backgroundTint="@color/blue_light"
+        android:onClick="clickOverview"
         android:text="@string/overview"
         android:textAppearance="@style/ButtonTextStyle"
         android:textColor="@color/white"
