@@ -54,6 +54,7 @@ public class expensesActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter11);
         TextView tv_filter2 = findViewById(R.id.tv_filter22);
         TextView tv_filter3 = findViewById(R.id.tv_filter33);
+        tvExpenses = findViewById(R.id.tv_expenses);
         etNewCategory = findViewById(R.id.et_new_category);
         etDetail = findViewById(R.id.et_detail);
         etValueExpenses = findViewById(R.id.et_value_expenses);
@@ -77,17 +78,18 @@ public class expensesActivity extends AppCompatActivity {
                         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2,categoriesNames);
                         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
                         mySpinner2.setAdapter(adapter2);
+
+                        tv_filter1.setText(categoriesNames.get(0));
+                        tv_filter2.setText(categoriesNames.get(1));
+                        tv_filter3.setText(categoriesNames.get(2));
                         // Aquí es donde debes inicializar el Spinner con los nombres de las categorías
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
 
-        //if (filter.size() >= 3) {
-            //tv_filter1.setText(filter.get(1));
-            //tv_filter2.setText(filter.get(2));
-            //tv_filter3.setText(filter.get(3));
-        //}
+
+
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
