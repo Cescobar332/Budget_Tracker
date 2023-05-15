@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ import java.util.List;
 public class BolsillosActivity extends AppCompatActivity {
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
     private RecyclerView rvListadoBolsillos;
+    private TextView tvBalance, tvSaved, tvSpent;
     private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
     AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
@@ -33,6 +35,9 @@ public class BolsillosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsillos);
+        tvBalance = findViewById(R.id.tv_total_bolsillos);
+        tvSaved = findViewById(R.id.tv_savenum_bolsillos);
+        tvSpent = findViewById(R.id.tv_spentnum_bolsillos);
         etNombreBolsillo = findViewById(R.id.et_new_wallet);
         etMontoBolsillo = findViewById(R.id.et_new_wallet_mount);
         idBolsillo = getIntent().getStringExtra("bolsillo_id");
