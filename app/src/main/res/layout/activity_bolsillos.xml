@@ -12,7 +12,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
-        android:text="0 $"
+        android:text="$0"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
@@ -71,7 +71,7 @@
             android:id="@+id/tv_saved_bolsillos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="32dp"
             android:text="@string/saved"
             android:textColor="@color/white"
@@ -83,11 +83,16 @@
             android:id="@+id/tv_savenum_bolsillos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="8dp"
-            android:text="0 $"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginBottom="16dp"
+            android:text="$0"
             android:textColor="@color/white"
             android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_barra_bolsillos"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_saved_bolsillos" />
 
@@ -95,12 +100,16 @@
             android:id="@+id/tv_barra_bolsillos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
             android:text="|"
             android:textColor="@color/white"
             android:textSize="34sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_spent_bolsillos"
+            app:layout_constraintStart_toEndOf="@+id/tv_saved_bolsillos"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -108,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="120dp"
+            android:layout_marginEnd="80dp"
             android:text="@string/spent"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -119,132 +128,155 @@
             android:id="@+id/tv_spentnum_bolsillos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="120dp"
-            android:text="0 $"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="32dp"
+            android:text="$0"
             android:textColor="@color/white"
             android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_barra_bolsillos"
             app:layout_constraintTop_toBottomOf="@+id/tv_spent_bolsillos" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="590dp"
-        android:layout_marginTop="-100dp"
-        android:background="@drawable/shape_main_activity"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_back_bolsillos">
-
-        <TextView
-            android:id="@+id/tv_background_bolsillos"
-            android:layout_width="320dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginEnd="55dp"
-            android:background="@drawable/shape_rounded_button"
-            android:backgroundTint="@color/purple_op"
-            android:padding="20dp"
-            android:text="@string/new_wallet"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-        <EditText
-            android:id="@+id/et_new_wallet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/shape_border_button"
-            android:elevation="150dp"
-            android:ems="10"
-            android:hint="@string/wallet_name"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/purple_dark"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
-            app:layout_constraintTop_toTopOf="@+id/tv_background_bolsillos" />
-
-        <EditText
-            android:id="@+id/et_new_wallet_mount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/shape_border_button"
-            android:elevation="150dp"
-            android:ems="10"
-            android:hint="@string/wallets_mount"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/purple_dark"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_wallet" />
-
-        <Button
-            android:id="@+id/btn_save_bolsillos"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/shape_rounded_button"
-            android:backgroundTint="@color/purple_dark"
-            android:onClick="AgregarBolsillo"
-            android:text="@string/save"
-            android:textAppearance="@style/ButtonTextStyle"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
-            app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_wallet_mount" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/wallet"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:background="@drawable/shape_main_activity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_savenum_bolsillos"
+            app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/btn_add3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/shape_button_circle"
-            android:backgroundTint="@color/purple_dark"
-            android:onClick="NewWallet"
-            android:text="@string/plus"
-            android:textColor="@color/white"
-            android:textSize="34sp"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_listado_bolsillos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_background_bolsillos"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                <TextView
+                    android:id="@+id/tv_background_bolsillos"
+                    android:layout_width="320dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginEnd="55dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/shape_rounded_button"
+                    android:backgroundTint="@color/purple_op"
+                    android:padding="20dp"
+                    android:text="@string/new_wallet"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.473"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <EditText
+                    android:id="@+id/et_new_wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/shape_border_button"
+                    android:elevation="150dp"
+                    android:ems="10"
+                    android:hint="@string/wallet_name"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/purple_dark"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintTop_toTopOf="@+id/tv_background_bolsillos" />
+
+                <EditText
+                    android:id="@+id/et_new_wallet_mount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_border_button"
+                    android:elevation="150dp"
+                    android:ems="10"
+                    android:hint="@string/wallets_amount"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/purple_dark"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintTop_toBottomOf="@+id/et_new_wallet" />
+
+                <Button
+                    android:id="@+id/btn_save_bolsillos"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_rounded_button"
+                    android:backgroundTint="@color/purple_dark"
+                    android:onClick="AgregarBolsillo"
+                    android:text="@string/save"
+                    android:textAppearance="@style/ButtonTextStyle"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintStart_toStartOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintTop_toBottomOf="@+id/et_new_wallet_mount" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginBottom="33dp"
+                    android:text="@string/wallet"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/rv_listado_bolsillos"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_add3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginBottom="56dp"
+                    android:background="@drawable/shape_button_circle"
+                    android:backgroundTint="@color/purple_dark"
+                    android:onClick="NewWallet"
+                    android:text="@string/plus"
+                    android:textColor="@color/white"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toTopOf="@+id/rv_listado_bolsillos"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_listado_bolsillos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_background_bolsillos"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

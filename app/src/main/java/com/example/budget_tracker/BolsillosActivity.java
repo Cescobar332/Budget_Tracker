@@ -11,20 +11,25 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BolsillosActivity extends AppCompatActivity implements Serializable{
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
     private RecyclerView rvListadoBolsillos;
+    private TextView tvBalance, tvSaved, tvSpent;
     private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
 
@@ -35,6 +40,9 @@ public class BolsillosActivity extends AppCompatActivity implements Serializable
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsillos);
+        tvBalance = findViewById(R.id.tv_total_bolsillos);
+        tvSaved = findViewById(R.id.tv_savenum_bolsillos);
+        tvSpent = findViewById(R.id.tv_spentnum_bolsillos);
         etNombreBolsillo = findViewById(R.id.et_new_wallet);
         etMontoBolsillo = findViewById(R.id.et_new_wallet_mount);
         idBolsillo = getIntent().getStringExtra("bolsillo_id");
@@ -108,6 +116,9 @@ public class BolsillosActivity extends AppCompatActivity implements Serializable
     }
 
     public void AgregarBolsillo(View view) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
         String nombre = etNombreBolsillo.getText().toString();
         Double monto = Double.parseDouble(etMontoBolsillo.getText().toString());
         String siglaNombre = obtenerSiglaNombre(nombre);

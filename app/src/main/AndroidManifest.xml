@@ -19,10 +19,7 @@
             android:exported="false" />
         <activity
             android:name=".incomesActivity"
-            android:exported="false">
-        </activity>
-
-
+            android:exported="false"/>
         <activity
             android:name=".expensesActivity"
             android:exported="false" />
@@ -31,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".detailActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".OverviewActivity"
             android:exported="false" />
@@ -46,7 +43,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
