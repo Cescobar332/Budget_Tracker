@@ -116,7 +116,7 @@ public class expensesActivity extends AppCompatActivity {
 
     public void ClickSave (View view){
         String cat = etNewCategory.getText().toString();
-        filter.add(cat);
+        categoriesNames.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
         Double val = Double.parseDouble(etValueExpenses.getText().toString());
