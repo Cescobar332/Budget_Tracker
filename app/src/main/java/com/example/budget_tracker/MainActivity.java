@@ -121,9 +121,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-
     public void CerrarSesion(View view) {
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         SharedPreferences.Editor miEditor = misPreferencias.edit();

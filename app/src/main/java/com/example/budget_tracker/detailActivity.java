@@ -7,23 +7,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class detailActivity extends AppCompatActivity {
-    private Spinner spinnerMonth;
+public class detailActivity extends AppCompatActivity implements Serializable {
+    private Spinner spinner2;
+    private AdaptadorPersonalizado miAdaptador;
+    private Button btnadd, btnadd1, btnadd2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        btnadd = findViewById(R.id.btn_add1);
+        btnadd1 = findViewById(R.id.btn_add);
+        btnadd2 = findViewById(R.id.btn_add2);
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
+
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(detailActivity.this, incomesActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnadd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(detailActivity.this, expensesActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnadd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(detailActivity.this, savingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        AdaptadorPersonalizado miAdaptador = (AdaptadorPersonalizado) getIntent().getSerializableExtra("adaptador");
 
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
@@ -41,15 +73,36 @@ public class detailActivity extends AppCompatActivity {
         mySpinner2.setAdapter(adapter2);
         mySpinner.setAdapter(adapter);
 
-        String monthName = getIntent().getStringExtra("MONTH_NAME");
+        Intent intent2 = getIntent();
+        String[] listado = intent2.getStringArrayExtra("listado");
 
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, options);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(adapter);
+        mySpinner2.setAdapter(adapter3);
+
+
+        mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object elementoSeleccionado = parent.getItemAtPosition(position);
+                // Hacer algo con el elemento seleccionado
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No se ha seleccionado nada en el Spinner
+            }
+        });
+
+
+        String monthName = getIntent().getStringExtra("MONTH_NAME");
 
         if (filter.size() >= 3) {
             tv_filter1.setText(filter.get(1));
             tv_filter2.setText(filter.get(2));
-            tv_filter3.setText(filter.get(3));}
+            tv_filter3.setText(filter.get(3));
+        }
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,15 +123,13 @@ public class detailActivity extends AppCompatActivity {
                 String selectedOption = filter.get(position);
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Lógica para cuando no se ha seleccionado ninguna opción del spinner
             }
         });
-
-
     }
-
 
 
 

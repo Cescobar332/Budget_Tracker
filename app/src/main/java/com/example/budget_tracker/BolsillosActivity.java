@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,14 +19,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BolsillosActivity extends AppCompatActivity {
+public class BolsillosActivity extends AppCompatActivity implements Serializable{
     private ArrayList<Bolsillo> listaPrincipalBolsillos = new ArrayList<>();
     private RecyclerView rvListadoBolsillos;
     private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
-    AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
+
+
+    AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(this, R.layout.activity_bolsillos, listaPrincipalBolsillos);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +38,8 @@ public class BolsillosActivity extends AppCompatActivity {
         etNombreBolsillo = findViewById(R.id.et_new_wallet);
         etMontoBolsillo = findViewById(R.id.et_new_wallet_mount);
         idBolsillo = getIntent().getStringExtra("bolsillo_id");
-        rvListadoBolsillos =findViewById(R.id.rv_listado_bolsillos);
+        rvListadoBolsillos = findViewById(R.id.rv_listado_bolsillos);
+
 
         miAdaptador.setOnItemClickListener(new AdaptadorPersonalizado.OnItemClickListener() {
             @Override
@@ -42,6 +48,9 @@ public class BolsillosActivity extends AppCompatActivity {
                 intent.putExtra("bolsillo", miBolsillo);
                 intent.putExtra("bolsillo_id", miBolsillo.getId());
                 startActivity(intent);
+                Intent intent2= new Intent(BolsillosActivity.this, detailActivity.class);
+                intent2.putExtra("listado", listaPrincipalBolsillos);
+                startActivity(intent2);
             }
 
             @Override
@@ -64,25 +73,27 @@ public class BolsillosActivity extends AppCompatActivity {
         listaPrincipalBolsillos.clear();
         cargarDatos();
     }
-    public void cargarDatos(){
+
+    public void cargarDatos() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("bolsillos").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(DocumentSnapshot document : task.getResult()){
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
                         Bolsillo bolsilloAtrapado = document.toObject(Bolsillo.class);
                         assert bolsilloAtrapado != null;
                         bolsilloAtrapado.setId(document.getId());
                         listaPrincipalBolsillos.add(bolsilloAtrapado);
                     }
                     miAdaptador.setListadoInformacion(listaPrincipalBolsillos);
-                }else{
+                } else {
                     Toast.makeText(BolsillosActivity.this, "No se pudo conectar al servidor", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
     private String obtenerSiglaNombre(String nombreBolsillo) {
         StringBuilder sigla = new StringBuilder();
         String[] palabras = nombreBolsillo.split(" ");
@@ -98,7 +109,7 @@ public class BolsillosActivity extends AppCompatActivity {
 
     public void AgregarBolsillo(View view) {
         String nombre = etNombreBolsillo.getText().toString();
-        Double monto =  Double.parseDouble(etMontoBolsillo.getText().toString());
+        Double monto = Double.parseDouble(etMontoBolsillo.getText().toString());
         String siglaNombre = obtenerSiglaNombre(nombre);
         Bolsillo nuevoBolsillo = new Bolsillo();
         nuevoBolsillo.setNombre(nombre);
@@ -123,7 +134,7 @@ public class BolsillosActivity extends AppCompatActivity {
         etMontoBolsillo.clearFocus();
     }
 
-    public void CerrarSesion(View view){
+    public void CerrarSesion(View view) {
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();
@@ -132,7 +143,11 @@ public class BolsillosActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
-    public void NewWallet(View view){
+
+    public void NewWallet(View view) {
         etNombreBolsillo.requestFocus();
     }
+
 }
+
+
