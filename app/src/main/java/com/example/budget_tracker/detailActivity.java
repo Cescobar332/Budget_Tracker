@@ -55,9 +55,6 @@ public class detailActivity extends AppCompatActivity implements Serializable {
             }
         });
 
-        AdaptadorPersonalizado miAdaptador = (AdaptadorPersonalizado) getIntent().getSerializableExtra("adaptador");
-
-
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
         List<String> options = new ArrayList<>(Arrays.asList(optionsArray));
@@ -74,12 +71,12 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         mySpinner.setAdapter(adapter);
 
         Intent intent2 = getIntent();
-        String[] listado = intent2.getStringArrayExtra("listado");
+        List<String> listado = intent2.getStringArrayListExtra("listado");
 
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, options);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(adapter3);
+        ArrayAdapter<String> nuevoadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listado);
+        nuevoadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner2.setAdapter(nuevoadapter);
+
 
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
