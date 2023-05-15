@@ -44,6 +44,7 @@ public class incomesActivity extends AppCompatActivity {
 
     TextView tvIncomes;
     Double valorActual = 0.0;
+    Double valor = 0.0;
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     CollectionReference categoriasRef = firestore.collection("categorias");
@@ -139,46 +140,52 @@ public class incomesActivity extends AppCompatActivity {
         etNewCategory.setText("");
     }
     public void ClickDone (View view){
-        String tipo = tvIncomes.getText().toString();
-        String categoria = selectedOption;
-        Double valor = Double.parseDouble(etValueIncomes.getText().toString());
-        String descripcion = etDetail.getText().toString();
-        Income income = new Income();
-        income.setCategory(categoria);
-        income.setType(tipo);
-        income.setDetail(descripcion);
-        income.setValue(valor);
-        firestore.collection("incomes").add(income);
-        Toast.makeText(this, "Se creo el income", Toast.LENGTH_SHORT).show();
-        Intent myintent = new Intent(this, detailActivity.class);
-        myintent.putExtra("catinc", categoria);
-        myintent.putExtra("valinc", valor);
-        myintent.putExtra("tipinc", tipo);
-        myintent.putExtra("descinc", descripcion);
-        Query query = categoriasRef.whereEqualTo("nombre", categoria);
-        query.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                QuerySnapshot snapshot = task.getResult();
-                if (!snapshot.isEmpty()) {
-                    // El objeto existe en la colección
-                    DocumentSnapshot document = snapshot.getDocuments().get(0);
-                    if(document.getDouble("valinc") == null){
+        valor = valor + Double.parseDouble(etValueIncomes.getText().toString());
+        if(valor == 0.0  || etDetail.getText().toString() == null){
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+        }else{
+            String tipo = tvIncomes.getText().toString();
+            String categoria = selectedOption;
+            valor = Double.parseDouble(etValueIncomes.getText().toString());
+            String descripcion = etDetail.getText().toString();
+            Income income = new Income();
+            income.setCategory(categoria);
+            income.setType(tipo);
+            income.setDetail(descripcion);
+            income.setValue(valor);
+            firestore.collection("incomes").add(income);
+            Toast.makeText(this, "Se creo el income", Toast.LENGTH_SHORT).show();
+            Intent myintent = new Intent(this, detailActivity.class);
+            myintent.putExtra("catinc", categoria);
+            myintent.putExtra("valinc", valor);
+            myintent.putExtra("tipinc", tipo);
+            myintent.putExtra("descinc", descripcion);
+            Query query = categoriasRef.whereEqualTo("nombre", categoria);
+            query.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    QuerySnapshot snapshot = task.getResult();
+                    if (!snapshot.isEmpty()) {
+                        // El objeto existe en la colección
+                        DocumentSnapshot document = snapshot.getDocuments().get(0);
+                        if(document.getDouble("valinc") == null){
 
-                        valorActual = 0.0;
-                    }else{
-                        valorActual = document.getDouble("valinc");
+                            valorActual = 0.0;
+                        }else{
+                            valorActual = document.getDouble("valinc");
+                        }
+                        Double valorNuevo =   valor + Double.parseDouble(income.getValue().toString());
+                        document.getReference().update("valinc", valorNuevo);
+                    } else {
+                        // El objeto no existe en la colección
+                        Log.d(TAG, "El objeto no existe en la colección");
                     }
-                    Double valorNuevo =   valor + Double.parseDouble(income.getValue().toString());
-                    document.getReference().update("valinc", valorNuevo);
                 } else {
-                    // El objeto no existe en la colección
-                    Log.d(TAG, "El objeto no existe en la colección");
+                    // Ocurrió un error al ejecutar la consulta
+                    Log.e(TAG, "Error al ejecutar la consulta", task.getException());
                 }
-            } else {
-                // Ocurrió un error al ejecutar la consulta
-                Log.e(TAG, "Error al ejecutar la consulta", task.getException());
-            }
-        });
-        startActivity(myintent);
+            });
+            startActivity(myintent);
+        }
+
     }
 }
