@@ -151,6 +151,10 @@ public class savingsActivity extends AppCompatActivity {
         firestore.collection("savings").add(saving);
         Toast.makeText(this, "Se creo el saving", Toast.LENGTH_SHORT).show();
         Intent myintent = new Intent(this, detailActivity.class);
+        myintent.putExtra("catsav", categoria);
+        myintent.putExtra("valsav", valor);
+        myintent.putExtra("tipsav", tipo);
+        myintent.putExtra("descsav", descripcion);
         Query query = categoriasRef.whereEqualTo("nombre", categoria);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

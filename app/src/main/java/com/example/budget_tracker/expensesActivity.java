@@ -156,6 +156,10 @@ public class expensesActivity extends AppCompatActivity {
         firestore.collection("expenses").add(expense);
         Toast.makeText(this, "Se creo el expense", Toast.LENGTH_SHORT).show();
         Intent myintent = new Intent(this, detailActivity.class);
+        myintent.putExtra("catexp", categoria);
+        myintent.putExtra("valexp", valor);
+        myintent.putExtra("tipexp", tipo);
+        myintent.putExtra("descexp", descripcion);
         Query query = categoriasRef.whereEqualTo("nombre", categoria);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
