@@ -2,7 +2,9 @@ package com.example.budget_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -53,5 +55,9 @@ public class OverviewActivity extends AppCompatActivity {
 //        progressBarIncomes.setProgress(porcentajeIngresosCategoria1);
 //        progressBarIncomes.setProgress(porcentajeIngresosCategoria2);
 
+    }
+    public void Return(View view){
+        Intent intent = new Intent(OverviewActivity.this, detailActivity.class);
+        startActivity(intent);
     }
 }
