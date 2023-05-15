@@ -115,7 +115,6 @@ public class savingsActivity extends AppCompatActivity {
         categoriesNames.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
-        Double val = Double.parseDouble(etValue2.getText().toString());
         Double valsav = 0.0;
         Double valexp = 0.0;
         Double valinc = 0.0;
