@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,6 +45,7 @@ public class incomesActivity extends AppCompatActivity {
 
     TextView tvIncomes;
     Double valorActual = 0.0;
+    Double valor = 0.0;
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     CollectionReference categoriasRef = firestore.collection("categorias");
@@ -112,7 +114,12 @@ public class incomesActivity extends AppCompatActivity {
     }
 
     public void clickSave (View view){
+
         String cat = etNewCategory.getText().toString();
+        if (TextUtils.isEmpty(cat)) {
+            Toast.makeText(this, "Debes ingresar un nombre para la categoría", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         categoriesNames.add(cat);
         adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
@@ -139,9 +146,23 @@ public class incomesActivity extends AppCompatActivity {
         etNewCategory.setText("");
     }
     public void ClickDone (View view){
+        String valorIngresos = etValueIncomes.getText().toString();
+        String descIngresos = etDetail.getText().toString();
+        if (TextUtils.isEmpty(valorIngresos)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
+        if (!TextUtils.isDigitsOnly(valorIngresos)) {
+            Toast.makeText(this, "El valor ingresado no es válido", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el contenido no es numérico
+        }
+        if (TextUtils.isEmpty(descIngresos)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         String tipo = tvIncomes.getText().toString();
         String categoria = selectedOption;
-        Double valor = Double.parseDouble(etValueIncomes.getText().toString());
+        valor = Double.parseDouble(etValueIncomes.getText().toString());
         String descripcion = etDetail.getText().toString();
         Income income = new Income();
         income.setCategory(categoria);
@@ -162,13 +183,13 @@ public class incomesActivity extends AppCompatActivity {
                 if (!snapshot.isEmpty()) {
                     // El objeto existe en la colección
                     DocumentSnapshot document = snapshot.getDocuments().get(0);
-                    if(document.getDouble("valinc") == null){
+                    if (document.getDouble("valinc") == null) {
 
                         valorActual = 0.0;
-                    }else{
+                    } else {
                         valorActual = document.getDouble("valinc");
                     }
-                    Double valorNuevo =   valor + Double.parseDouble(income.getValue().toString());
+                    Double valorNuevo = valorActual + Double.parseDouble(income.getValue().toString());
                     document.getReference().update("valinc", valorNuevo);
                 } else {
                     // El objeto no existe en la colección
@@ -180,5 +201,8 @@ public class incomesActivity extends AppCompatActivity {
             }
         });
         startActivity(myintent);
+
+
+
     }
 }
