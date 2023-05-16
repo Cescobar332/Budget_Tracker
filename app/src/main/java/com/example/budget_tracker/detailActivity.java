@@ -85,22 +85,22 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         Intent myintent = getIntent();
 
         // Obtiene el valor del Intent con la clave "mi_valor"
-        int valSav = myintent.getIntExtra("valsav", 0);
+        Double valSav = Double.parseDouble(myintent.getStringExtra("valsav").toString());
 
         //incomes
         Intent intent = getIntent();
 
         // Obtiene el valor del Intent con la clave "mi_valor"
-        int valInc= intent.getIntExtra("valinc", 0);
+        Double valInc = Double.parseDouble(myintent.getStringExtra("valinc").toString());
         mTotalIncomes += valInc;
 
         //expenses
         Intent myintent2 = getIntent();
 
         // Obtiene el valor del Intent con la clave "mi_valor"
-        int valexp= myintent2.getIntExtra("valexp", 0);
+        Double valExp = Double.parseDouble(myintent2.getStringExtra("valexp").toString());
 
-        int result = mTotalIncomes - valSav - valexp;
+        Double result = mTotalIncomes - valSav - valExp;
         tvTotal.setText(String.valueOf(result));
 
 
