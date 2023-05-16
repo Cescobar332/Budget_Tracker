@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".OverviewActivity">
 
+    <ImageButton
+        android:id="@+id/ib_logout_overview"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/logout"
+        android:onClick="CerrarSesion"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_principal_overview"
         android:layout_width="wrap_content"
@@ -22,7 +36,7 @@
         android:id="@+id/tv_balance_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="160dp"
         android:text="@string/tv_balance"
         android:textSize="20dp"
@@ -35,7 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="$10000"
-        android:textColor="@color/black"
         android:textSize="28dp"
         app:layout_constraintStart_toStartOf="@+id/tv_balance_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
@@ -44,7 +57,7 @@
         android:id="@+id/tv_incomes_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
         android:text="@string/incomes"
         android:textColor="@color/purple_dark"
@@ -67,9 +80,9 @@
         android:id="@+id/iv_incomes_overview"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_incomes_overview"
         app:srcCompat="@drawable/pincomes" />
@@ -77,10 +90,10 @@
     <ProgressBar
         android:id="@+id/pb_income_overview"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:progressTint="@color/purple_700"
         app:layout_constraintStart_toEndOf="@+id/iv_incomes_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_incomes_num_overview" />
@@ -89,19 +102,19 @@
         android:id="@+id/tv_categoria_incomes_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="200dp"
         android:text="Work"
         android:textColor="@color/purple_dark"
-        app:layout_constraintBottom_toTopOf="@+id/tv_categoria_expenses_overview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_categoria_expenses_overview" />
+        app:layout_constraintStart_toEndOf="@+id/pb_income_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_principal_overview" />
 
     <TextView
         android:id="@+id/tv_expenses_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/expenses"
         android:textColor="@color/blue_dark"
@@ -114,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="34dp"
         android:text="$2000"
         android:textColor="@color/blue_dark"
         app:layout_constraintStart_toEndOf="@+id/tv_expenses_overview"
@@ -124,9 +137,9 @@
         android:id="@+id/iv_expenses_overview"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_expenses_overview"
         app:srcCompat="@drawable/bexpenses" />
@@ -134,10 +147,10 @@
     <ProgressBar
         android:id="@+id/pb_expenses_overview"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:progressTint="@color/blue_dark"
         app:layout_constraintStart_toEndOf="@+id/iv_expenses_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_expenses_num_overview" />
@@ -146,22 +159,22 @@
         android:id="@+id/tv_categoria_expenses_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="62dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="90dp"
         android:text="Health"
         android:textColor="@color/blue_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_categoria_savings_overview"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/pb_expenses_overview"
+        app:layout_constraintTop_toBottomOf="@+id/tv_categoria_incomes_overview" />
 
     <TextView
         android:id="@+id/tv_savings_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/savings"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_expenses_overview" />
@@ -171,9 +184,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="$3000"
-        android:textColor="@color/blue_dark"
+        android:textColor="@color/blue_light"
         app:layout_constraintStart_toEndOf="@+id/tv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/pb_expenses_overview" />
 
@@ -181,9 +194,9 @@
         android:id="@+id/iv_savings_overview"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_overview"
         app:srcCompat="@drawable/gsavings" />
@@ -191,10 +204,10 @@
     <ProgressBar
         android:id="@+id/pb_savings_overview"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:progressTint="@color/green_dark"
         app:layout_constraintStart_toEndOf="@+id/iv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_num_overview" />
@@ -203,17 +216,19 @@
         android:id="@+id/tv_categoria_savings_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="78dp"
-        android:layout_marginEnd="74dp"
         android:text="Gifts"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pb_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria_expenses_overview" />
 
     <ImageView
         android:id="@+id/iv_border_overview_up"
         android:layout_width="211dp"
         android:layout_height="140dp"
+        android:elevation="-1dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -233,17 +248,14 @@
         style="@style/ButtonTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/shape_rounded_button"
-        android:backgroundTint="@color/blue_light"
         android:onClick="Return"
         android:text="Return"
-        android:textColor="@color/white"
+        android:textColor="@color/green_dark"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/iv_border_overview_down"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_categoria_savings_overview" />
+        app:layout_constraintTop_toBottomOf="@+id/pb_savings_overview" />
 </androidx.constraintlayout.widget.ConstraintLayout>
