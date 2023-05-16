@@ -20,6 +20,8 @@ public class detailActivity extends AppCompatActivity implements Serializable {
     private Spinner spinner2;
     private AdaptadorPersonalizado miAdaptador;
     private Button btnadd, btnadd1, btnadd2;
+    private TextView tvTotal;
+    private int mTotalIncomes = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +31,11 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         btnadd = findViewById(R.id.btn_add1);
         btnadd1 = findViewById(R.id.btn_add);
         btnadd2 = findViewById(R.id.btn_add2);
+
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
+        TextView tvTotal = findViewById(R.id.tv_total);
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,27 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         nuevoadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner2.setAdapter(nuevoadapter);
 
+        //savings
+        Intent myintent = getIntent();
+
+        // Obtiene el valor del Intent con la clave "mi_valor"
+        int valSav = myintent.getIntExtra("valsav", 1);
+
+        //incomes
+        Intent intent = getIntent();
+
+        // Obtiene el valor del Intent con la clave "mi_valor"
+        int valInc= intent.getIntExtra("valinc", 2);
+        mTotalIncomes += valInc;
+
+        //expenses
+        Intent myintent2 = getIntent();
+
+        // Obtiene el valor del Intent con la clave "mi_valor"
+        int valexp= myintent2.getIntExtra("valexp", 3);
+
+        int result = mTotalIncomes - valSav - valexp;
+        tvTotal.setText(String.valueOf(result));
 
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
