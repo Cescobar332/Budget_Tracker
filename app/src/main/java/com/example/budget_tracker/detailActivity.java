@@ -27,9 +27,9 @@ public class detailActivity extends AppCompatActivity {
         btnIncome = findViewById(R.id.btn_add1);
         btnExpense = findViewById(R.id.btn_add);
         btnSaving = findViewById(R.id.btn_add2);
-        TextView tv_filter1 = findViewById(R.id.tv_filter1);
-        TextView tv_filter2 = findViewById(R.id.tv_filter2);
-        TextView tv_filter3 = findViewById(R.id.tv_filter3);
+        TextView tvfilter1 = findViewById(R.id.tv_filter1);
+        TextView tvfilter2 = findViewById(R.id.tv_filter2);
+        TextView tvfilter3 = findViewById(R.id.tv_filter3);
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -47,9 +47,9 @@ public class detailActivity extends AppCompatActivity {
         mySpinner.setAdapter(adapter);
 
         if (filter.size() >= 3) {
-            tv_filter1.setText(filter.get(0));
-            tv_filter2.setText(filter.get(1));
-            tv_filter3.setText(filter.get(2));
+            tvfilter1.setText(filter.get(0));
+            tvfilter2.setText(filter.get(1));
+            tvfilter3.setText(filter.get(2));
         }
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -63,6 +63,38 @@ public class detailActivity extends AppCompatActivity {
                 // Lógica para cuando no se ha seleccionado ninguna opción del spinner
             }
         });
+
+        tvfilter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (filter.size() > 0) {
+                    int index = 0; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (filter.size() > 0) {
+                    int index = 1; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (filter.size() > 0) {
+                    int index = 2; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
