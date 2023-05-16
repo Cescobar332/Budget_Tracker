@@ -23,7 +23,7 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
     private OnItemClickListener onItemClickListener;
 
 
-    public AdaptadorPersonalizado(BolsillosActivity bolsillosActivity, int activity_bolsillos, ArrayList<Bolsillo> listadoInformacion){
+    public AdaptadorPersonalizado(ArrayList<Bolsillo> listadoInformacion){
         this.listadoInformacion = listadoInformacion;
         this.onItemClickListener = null;
     }
