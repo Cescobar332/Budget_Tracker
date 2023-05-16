@@ -140,8 +140,7 @@ public class incomesActivity extends AppCompatActivity {
         etNewCategory.setText("");
     }
     public void ClickDone (View view){
-        valor = valor + Double.parseDouble(etValueIncomes.getText().toString());
-        if(valor == 0.0  || etDetail.getText().toString() == null){
+        if( etValueIncomes.getText().toString() == ""  || etDetail.getText().toString() == null){
             Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }else{
             String tipo = tvIncomes.getText().toString();
