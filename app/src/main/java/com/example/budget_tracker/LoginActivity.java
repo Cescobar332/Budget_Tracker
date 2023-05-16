@@ -34,6 +34,12 @@ public class LoginActivity extends AppCompatActivity {
         referenciar();
 
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+
+        if (misPreferencias.getBoolean("logueado", false)){
+            Intent miIntent = new Intent(this,BolsillosActivity.class);
+            startActivity(miIntent);
+            finish();
+        }
         cargarData();
     }
 
@@ -70,8 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String userID = user.getUid(); // Obtener el ID único del usuario
                             SharedPreferences.Editor editor = misPreferencias.edit();
                             editor.putBoolean("logueado", true);
+                            editor.putString("userID", userID); // Guardar el ID único del usuario
                             editor.apply();
                             Intent intent = new Intent(LoginActivity.this, BolsillosActivity.class);
                             startActivity(intent);

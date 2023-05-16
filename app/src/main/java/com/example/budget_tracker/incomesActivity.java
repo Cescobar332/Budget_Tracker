@@ -39,11 +39,12 @@ public class incomesActivity extends AppCompatActivity {
     List<String> categoriesNames;
     private ArrayAdapter<String> adapter2;
 
+
     Spinner mySpinner2;
 
     String selectedOption;
 
-    TextView tvIncomes;
+    TextView tvIncomes, tvfilter1, tvfilter2, tvfilter3;
     Double valorActual = 0.0;
     Double valor = 0.0;
 
@@ -53,9 +54,9 @@ public class incomesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incomes);
-        TextView tv_filter1 = findViewById(R.id.tv_filter1111);
-        TextView tv_filter2 = findViewById(R.id.tv_filter2222);
-        TextView tv_filter3 = findViewById(R.id.tv_filter3333);
+        tvfilter1 = findViewById(R.id.tv_filter1111);
+        tvfilter2 = findViewById(R.id.tv_filter2222);
+        tvfilter3 = findViewById(R.id.tv_filter3333);
         etNewCategory = findViewById(R.id.et_new_category);
         tvIncomes = findViewById(R.id.tv_incomes);
         etDetail = findViewById(R.id.et_detail);
@@ -79,14 +80,44 @@ public class incomesActivity extends AppCompatActivity {
                         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2,categoriesNames);
                         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
                         mySpinner2.setAdapter(adapter2);
-                        tv_filter1.setText(categoriesNames.get(0));
-                        tv_filter2.setText(categoriesNames.get(1));
-                        tv_filter3.setText(categoriesNames.get(2));
+                        tvfilter1.setText(categoriesNames.get(0));
+                        tvfilter2.setText(categoriesNames.get(1));
+                        tvfilter3.setText(categoriesNames.get(2));
                         // Aquí es donde debes inicializar el Spinner con los nombres de las categorías
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
+
+        tvfilter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 0; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 1; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 2; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
 
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
