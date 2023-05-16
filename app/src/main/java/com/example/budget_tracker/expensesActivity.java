@@ -42,7 +42,7 @@ public class expensesActivity extends AppCompatActivity {
     String selectedOption;
     Spinner mySpinner2;
 
-    TextView tvExpenses;
+    TextView tvExpenses, tvfilter1, tvfilter2, tvfilter3;
 
     Double valorActual = 0.0;
 
@@ -52,9 +52,9 @@ public class expensesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
-        TextView tv_filter1 = findViewById(R.id.tv_filter11);
-        TextView tv_filter2 = findViewById(R.id.tv_filter22);
-        TextView tv_filter3 = findViewById(R.id.tv_filter33);
+        tvfilter1 = findViewById(R.id.tv_filter11);
+        tvfilter2 = findViewById(R.id.tv_filter22);
+        tvfilter3 = findViewById(R.id.tv_filter33);
         tvExpenses = findViewById(R.id.tv_expenses);
         etNewCategory = findViewById(R.id.et_new_category);
         etDetail = findViewById(R.id.et_detail);
@@ -80,14 +80,44 @@ public class expensesActivity extends AppCompatActivity {
                         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
                         mySpinner2.setAdapter(adapter2);
 
-                        tv_filter1.setText(categoriesNames.get(0));
-                        tv_filter2.setText(categoriesNames.get(1));
-                        tv_filter3.setText(categoriesNames.get(2));
+                        tvfilter1.setText(categoriesNames.get(0));
+                        tvfilter2.setText(categoriesNames.get(1));
+                        tvfilter3.setText(categoriesNames.get(2));
                         // Aquí es donde debes inicializar el Spinner con los nombres de las categorías
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
+
+        tvfilter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 0; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 1; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
+
+        tvfilter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categoriesNames.size() > 0) {
+                    int index = 2; // Índice de la opción que deseas seleccionar en mySpinner2
+                    mySpinner2.setSelection(index);
+                }
+            }
+        });
 
 
 
