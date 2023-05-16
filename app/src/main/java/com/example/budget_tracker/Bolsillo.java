@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class Bolsillo implements Serializable {
     private String id = "1";
+    private String idUsuario;
 
     public Bolsillo(String sigla, String nombre, Double monto) {
         this.sigla = sigla;
@@ -14,6 +15,14 @@ public class Bolsillo implements Serializable {
     }
     public Bolsillo(){
 
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String sigla;
