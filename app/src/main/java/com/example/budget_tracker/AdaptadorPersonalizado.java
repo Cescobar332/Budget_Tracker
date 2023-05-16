@@ -1,10 +1,11 @@
 package com.example.budget_tracker;
 
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPersonalizado.ViewHolder> {
+public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPersonalizado.ViewHolder> implements SpinnerAdapter {
     public void setListadoInformacion(ArrayList<Bolsillo> listadoInformacion) {
         this.listadoInformacion = listadoInformacion;
         notifyDataSetChanged();
@@ -20,6 +21,7 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
 
     private ArrayList<Bolsillo> listadoInformacion;
     private OnItemClickListener onItemClickListener;
+
 
     public AdaptadorPersonalizado(ArrayList<Bolsillo> listadoInformacion){
         this.listadoInformacion = listadoInformacion;
@@ -44,6 +46,49 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
     @Override
     public int getItemCount() {
         return listadoInformacion.size();
+    }
+
+    @Override
+    public View getDropDownView(int i, View view, ViewGroup viewGroup) {
+        return null;
+    }
+
+    @Override
+    public void registerDataSetObserver(DataSetObserver dataSetObserver) {
+
+    }
+
+    @Override
+    public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
+
+    }
+
+    @Override
+    public int getCount() {
+        return 0;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return null;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    public void setDropDownViewResource(int simple_spinner_dropdown_item) {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -81,4 +126,5 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
         void OnItemClick(Bolsillo miBolsillo, int posicion);
         void OnItemBtnEliminarClick(Bolsillo miBolsillo, int posicion);
     }
+
 }
