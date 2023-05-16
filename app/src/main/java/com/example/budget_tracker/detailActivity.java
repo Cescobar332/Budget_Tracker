@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,11 +18,15 @@ import java.util.List;
 
 public class detailActivity extends AppCompatActivity {
 
+
+    Button btnIncome, btnSaving, btnExpense;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        btnIncome = findViewById(R.id.btn_add1);
+        btnExpense = findViewById(R.id.btn_add);
+        btnSaving = findViewById(R.id.btn_add2);
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
@@ -89,5 +94,19 @@ public class detailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void AddIncome(View view){
+        Intent intent =  new Intent(this, incomesActivity.class);
+        startActivity(intent);
+    }
+
+    public void AddSaving(View view){
+        Intent intent =  new Intent(this, savingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void AddExpense(View view){
+        Intent intent =  new Intent(this, expensesActivity.class);
+        startActivity(intent);
+    }
 
 }

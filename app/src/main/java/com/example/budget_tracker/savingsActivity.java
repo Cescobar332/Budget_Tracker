@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -112,6 +113,10 @@ public class savingsActivity extends AppCompatActivity {
     }
     public void ClickSave (View view){
         String cat = etNewCategory.getText().toString();
+        if (TextUtils.isEmpty(cat)) {
+            Toast.makeText(this, "Debes ingresar un nombre para la categoría", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         categoriesNames.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
         adapter2.notifyDataSetChanged();
@@ -138,6 +143,20 @@ public class savingsActivity extends AppCompatActivity {
     }
 
     public void ClickDone (View view){
+        String valorSavings = etValue2.getText().toString();
+        String descSavings = etDetail.getText().toString();
+        if (TextUtils.isEmpty(valorSavings)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
+        if (!TextUtils.isDigitsOnly(valorSavings)) {
+            Toast.makeText(this, "El valor ingresado no es válido", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el contenido no es numérico
+        }
+        if (TextUtils.isEmpty(descSavings)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         String tipo = tvSavings.getText().toString();
         String categoria = selectedOption;
         Double valor = Double.parseDouble(etValue2.getText().toString());
@@ -167,7 +186,7 @@ public class savingsActivity extends AppCompatActivity {
                     }else{
                         valorActual = document.getDouble("valsav");
                     }
-                    Double valorNuevo =   valor + Double.parseDouble(saving.getValue().toString());
+                    Double valorNuevo =   valorActual + Double.parseDouble(saving.getValue().toString());
                     document.getReference().update("valsav", valorNuevo);
                 } else {
                     // El objeto no existe en la colección

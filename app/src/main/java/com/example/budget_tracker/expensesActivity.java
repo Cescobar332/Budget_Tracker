@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -116,10 +117,12 @@ public class expensesActivity extends AppCompatActivity {
 
     public void ClickSave (View view){
         String cat = etNewCategory.getText().toString();
+        if (TextUtils.isEmpty(cat)) {
+            Toast.makeText(this, "Debes ingresar un nombre para la categoría", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         categoriesNames.add(cat);
         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) mySpinner2.getAdapter();
-        adapter2.notifyDataSetChanged();
-        Double val = Double.parseDouble(etValueExpenses.getText().toString());
         adapter2.notifyDataSetChanged();
         Double valsav = 0.0;
         Double valexp = 0.0;
@@ -144,6 +147,20 @@ public class expensesActivity extends AppCompatActivity {
     }
 
     public void ClickDone (View view){
+        String valorExpenses = etValueExpenses.getText().toString();
+        String descExpenses = etDetail.getText().toString();
+        if (TextUtils.isEmpty(valorExpenses)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
+        if (!TextUtils.isDigitsOnly(valorExpenses)) {
+            Toast.makeText(this, "El valor ingresado no es válido", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el contenido no es numérico
+        }
+        if (TextUtils.isEmpty(descExpenses)) {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            return; // Salir del método si el campo está vacío
+        }
         String tipo = tvExpenses.getText().toString();
         String categoria = selectedOption;
         Double valor = Double.parseDouble(etValueExpenses.getText().toString());
@@ -173,7 +190,7 @@ public class expensesActivity extends AppCompatActivity {
                     }else{
                         valorActual = document.getDouble("valexp");
                     }
-                    Double valorNuevo =   valor + Double.parseDouble(expense.getValue().toString());
+                    Double valorNuevo =   valorActual + Double.parseDouble(expense.getValue().toString());
                     document.getReference().update("valexp", valorNuevo);
                 } else {
                     // El objeto no existe en la colección
