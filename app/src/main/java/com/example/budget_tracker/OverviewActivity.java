@@ -3,6 +3,7 @@ package com.example.budget_tracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 
 public class OverviewActivity extends AppCompatActivity {
     private TextView tvBalance, tvIncomes, tvExpenses, tvSavings, tvCatIncomes, tvCatExpenses, tvCatSavings;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,5 +68,15 @@ public class OverviewActivity extends AppCompatActivity {
     public void Return(View view){
         Intent intent = new Intent(OverviewActivity.this, detailActivity.class);
         startActivity(intent);
+    }
+
+    public void CerrarSesion(View view){
+        SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        SharedPreferences.Editor miEditor = misPreferencias.edit();
+        miEditor.clear();
+        miEditor.apply();
+
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }
