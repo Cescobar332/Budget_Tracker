@@ -53,6 +53,11 @@ public class BolsillosActivity extends AppCompatActivity {
                 intent.putExtra("bolsillo", miBolsillo);
                 intent.putExtra("bolsillo_id", miBolsillo.getId());
                 startActivity(intent);
+                ArrayList<String> listaPrincipal = new ArrayList<>();
+                listaPrincipal.add(String.valueOf(listaPrincipalBolsillos));
+                Intent intent2 = new Intent(BolsillosActivity.this, detailActivity.class);
+                intent2.putStringArrayListExtra("listado", listaPrincipal);
+                startActivity(intent2);
             }
 
             @Override

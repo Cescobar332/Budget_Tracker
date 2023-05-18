@@ -23,6 +23,9 @@ public class detailActivity extends AppCompatActivity implements Serializable {
     private TextView tvTotal;
     private int mTotalIncomes = 0;
 
+    public static void receiveArrayList(ArrayList<Bolsillo> listaPrincipalBolsillos) {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,35 +77,17 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         mySpinner2.setAdapter(adapter2);
         mySpinner.setAdapter(adapter);
 
-        Intent intent2 = getIntent();
-        List<String> listado = intent2.getStringArrayListExtra("listado");
+        ArrayList<String> listadoPrincipalProductos = getIntent().getStringArrayListExtra("listado");
 
-        ArrayAdapter<String> nuevoadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listado);
-        nuevoadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(nuevoadapter);
+        // Crea un ArrayAdapter y asigna los datos al Spinner
+        ArrayAdapter<String> myadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listadoPrincipalProductos);
+        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner2.setAdapter(myadapter);
 
-        //savings
-        Intent myintent = getIntent();
+        String texto = getIntent().getStringExtra("valinc");
 
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        Double valSav = Double.parseDouble(myintent.getStringExtra("valsav").toString());
-
-        //incomes
-        Intent intent = getIntent();
-
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        Double valInc = Double.parseDouble(myintent.getStringExtra("valinc").toString());
-        mTotalIncomes += valInc;
-
-        //expenses
-        Intent myintent2 = getIntent();
-
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        Double valExp = Double.parseDouble(myintent2.getStringExtra("valexp").toString());
-
-        Double result = mTotalIncomes - valSav - valExp;
-        tvTotal.setText(String.valueOf(result));
-
+        // Muestra el valor en el TextView
+        tvTotal.setText(texto);
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
