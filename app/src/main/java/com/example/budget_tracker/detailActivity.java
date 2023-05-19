@@ -40,6 +40,8 @@ public class detailActivity extends AppCompatActivity {
     Double expensesTotal = 0.0;
     Double savingsTotal = 0.0;
 
+    TextView tv1, tv2, tv3;
+
     // Calcular la suma total según la fórmula
     Double total = incomesTotal - (expensesTotal + savingsTotal);
     @Override
@@ -49,9 +51,9 @@ public class detailActivity extends AppCompatActivity {
         btnIncome = findViewById(R.id.btn_add1);
         btnExpense = findViewById(R.id.btn_add);
         btnSaving = findViewById(R.id.btn_add2);
-        TextView tv_filter1 = findViewById(R.id.tv_filter1);
-        TextView tv_filter2 = findViewById(R.id.tv_filter2);
-        TextView tv_filter3 = findViewById(R.id.tv_filter3);
+        tv1 = findViewById(R.id.tv_filter1);
+        tv2 = findViewById(R.id.tv_filter2);
+        tv3 = findViewById(R.id.tv_filter3);
 
         sumarValores("incomes");
         sumarValores("savings");
@@ -105,6 +107,10 @@ public class detailActivity extends AppCompatActivity {
                         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2,BolsillosNames);
                         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
                         mySpinner2.setAdapter(adapter2);
+
+                        tv1.setText(BolsillosNames.get(0));
+                        tv2.setText(BolsillosNames.get(1));
+                        tv3.setText(BolsillosNames.get(2));
 
                         // Aquí es donde debes inicializar el Spinner con los nombres de las categorías
                     } else {
