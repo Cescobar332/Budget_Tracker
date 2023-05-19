@@ -210,14 +210,14 @@ public class savingsActivity extends AppCompatActivity {
                 if (!snapshot.isEmpty()) {
                     // El objeto existe en la colección
                     DocumentSnapshot document = snapshot.getDocuments().get(0);
-                    if(document.getDouble("valsav") == null){
+                    if(document.getDouble("montosav") == null){
 
                         valorActual = 0.0;
                     }else{
-                        valorActual = document.getDouble("valsav");
+                        valorActual = document.getDouble("montosav");
                     }
                     Double valorNuevo =   valorActual + Double.parseDouble(saving.getValue().toString());
-                    document.getReference().update("valsav", valorNuevo);
+                    document.getReference().update("montosav", valorNuevo);
                 } else {
                     // El objeto no existe en la colección
                     Log.d(TAG, "El objeto no existe en la colección");

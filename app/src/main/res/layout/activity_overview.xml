@@ -208,7 +208,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:progressTint="@color/green_dark"
+        android:progressTint="@color/blue_light"
         app:layout_constraintStart_toEndOf="@+id/iv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_num_overview" />
 
@@ -250,9 +250,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:background="@drawable/shape_rounded_button"
+        android:backgroundTint="@color/white"
         android:onClick="Return"
         android:text="Return"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
