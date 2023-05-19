@@ -16,13 +16,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void clickMes (View view){
+    public void clickMes (View view) {
         Button clickedButton = (Button) view;
         String month = clickedButton.getText().toString();
+
+        // Guardar el mes seleccionado en SharedPreferences
+        SharedPreferences.Editor editor = getSharedPreferences("budget_tracker", MODE_PRIVATE).edit();
+        editor.putString("selectedMonth", month);
+        editor.apply();
+
         Intent intent = new Intent(MainActivity.this, detailActivity.class);
-        intent.putExtra("month",month);
         startActivity(intent);
     }
+
 
     public void CerrarSesion(View view) {
         SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);

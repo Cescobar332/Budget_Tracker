@@ -32,7 +32,7 @@ public class detailActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
-        month = getIntent().getStringExtra("month");
+//        month = getIntent().getStringExtra("month");
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -40,19 +40,22 @@ public class detailActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, options);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner.setAdapter(adapter);
+        // Obtener el mes seleccionado de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        String selectedMonth = preferences.getString("selectedMonth", "");
 
-        int selectedOptionIndex = -1; // Inicializamos con un valor inválido
 
-        for (int i = 0; i < options.size(); i++) {
+        int selectedOptionIndex =  options.indexOf(selectedMonth);
+        /*for (int i = 0; i < options.size(); i++) {
             if (options.get(i).equals(month)) {
                 selectedOptionIndex = i; // Encontramos el mes, guardamos su posición
                 break; // Salimos del bucle
             }
-        }
+        }*/
 
         if (selectedOptionIndex >= 0) {
             mySpinner.setSelection(selectedOptionIndex, true);
-            Toast.makeText(detailActivity.this, "Selected Month: " + month, Toast.LENGTH_SHORT).show();
+            Toast.makeText(detailActivity.this, "Selected Month: " + selectedMonth, Toast.LENGTH_SHORT).show();
         }
 
 
@@ -71,17 +74,22 @@ public class detailActivity extends AppCompatActivity {
             tv_filter3.setText(filter.get(2));
         }
 
-        /*mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedOption = options.get(position);
+                // Guardar el mes seleccionado en SharedPreferences
+                SharedPreferences.Editor editor = getSharedPreferences("budget_tracker", MODE_PRIVATE).edit();
+                editor.putString("selectedMonth", selectedOption);
+                editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // L贸gica para cuando no se ha seleccionado ninguna opci贸n del spinner
+                // Lógica para cuando no se ha seleccionado ninguna opción del spinner
             }
         });
+
 
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,7 +102,7 @@ public class detailActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
                 // L贸gica para cuando no se ha seleccionado ninguna opci贸n del spinner
             }
-        });*/
+        });
 
     }
 
