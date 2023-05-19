@@ -214,14 +214,14 @@ public class incomesActivity extends AppCompatActivity {
                 if (!snapshot.isEmpty()) {
                     // El objeto existe en la colección
                     DocumentSnapshot document = snapshot.getDocuments().get(0);
-                    if (document.getDouble("valinc") == null) {
+                    if (document.getDouble("montoinc") == null) {
 
                         valorActual = 0.0;
                     } else {
-                        valorActual = document.getDouble("valinc");
+                        valorActual = document.getDouble("montoinc");
                     }
                     Double valorNuevo = valorActual + Double.parseDouble(income.getValue().toString());
-                    document.getReference().update("valinc", valorNuevo);
+                    document.getReference().update("montoinc", valorNuevo);
                 } else {
                     // El objeto no existe en la colección
                     Log.d(TAG, "El objeto no existe en la colección");
