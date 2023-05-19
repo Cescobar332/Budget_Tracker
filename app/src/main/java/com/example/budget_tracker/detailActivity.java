@@ -167,6 +167,9 @@ public class detailActivity extends AppCompatActivity {
     }
     public void clickOverview (View view){
         Intent intent = new Intent(detailActivity.this, OverviewActivity.class);
+        intent.putExtra("incomesTotal", incomesTotal);
+        intent.putExtra("expensesTotal", expensesTotal);
+        intent.putExtra("savingsTotal", savingsTotal);
         startActivity(intent);
     }
 

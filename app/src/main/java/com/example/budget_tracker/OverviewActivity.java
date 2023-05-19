@@ -24,46 +24,46 @@ public class OverviewActivity extends AppCompatActivity {
         tvCatExpenses = findViewById(R.id.tv_categoria_expenses_overview);
         tvCatSavings = findViewById(R.id.tv_categoria_savings_overview);
 
-        /*Income miIncomesAtrapado = (Income) getIntent().getSerializableExtra("income");
+        Intent intent = getIntent();
+        Double incomesTotal = intent.getDoubleExtra("incomesTotal", 0.0);
+        Double expensesTotal = intent.getDoubleExtra("expensesTotal", 0.0);
+        Double savingsTotal = intent.getDoubleExtra("savingsTotal", 0.0);
 
-        tvIncomes.setText("$" + miIncomesAtrapado.getValue().toString());
-        tvCatIncomes.setText(miIncomesAtrapado.getCategory());
+        Double balance = incomesTotal - (expensesTotal + savingsTotal);
 
-        Expense miExpensesAtrapado = (Expense) getIntent().getSerializableExtra("expense");
-
-        tvExpenses.setText("$" + miExpensesAtrapado.getValue().toString());
-        tvCatExpenses.setText(miExpensesAtrapado.getCategory());
-
-        Saving miSavingsAtrapado = (Saving) getIntent().getSerializableExtra("saving");
-
-        tvSavings.setText("$" + miSavingsAtrapado.getValue().toString());
-        tvCatSavings.setText(miSavingsAtrapado.getCategory());
-
-        Double resultado = miIncomesAtrapado.getValue() - (miExpensesAtrapado.getValue() + miSavingsAtrapado.getValue());
-        tvBalance.setText(resultado.toString());
-        Obtén los datos de ingresos
-        double ingresosCategoria1 = 75.0;
-        double ingresosCategoria2 = 25.0;
-
-        Calcula los porcentajes
-        double totalIngresos = ingresosCategoria1 + ingresosCategoria2;
-        int porcentajeIngresosCategoria1 = (int) (ingresosCategoria1 / totalIngresos * 100);*/
-        int porcentajeIngresosCategoria1 = (int) (15000 / 15000 * 100);
-
-        int porcentajeGastosCategoria1 = (int) (2000 / 2000 * 100);
-
-        int porcentajeAhorrosCategoria1 = (int) (3000 / 3000 * 100);
+        tvBalance.setText(String.valueOf(balance));
+        tvIncomes.setText(String.valueOf(incomesTotal));
+        tvExpenses.setText(String.valueOf(expensesTotal));
+        tvSavings.setText(String.valueOf(savingsTotal));
 
         //Actualiza las barras de progreso
+        /*
+        List<String> categoriasIngresos = new ArrayList<>();
+        List<String> categoriasGastos = new ArrayList<>();
+        List<String> categoriasAhorros = new ArrayList<>();
+        // Obtener las categorías de ingresos, gastos y ahorros desde donde los tengas guardados
+        // Por ejemplo, si los tienes en SharedPreferences, puedes recuperarlos de la siguiente manera
+        SharedPreferences preferences = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        categoriasIngresos = getCategorias(preferences, "categoriasIngresos"); // Reemplaza "categoriasIngresos" con la clave correcta en SharedPreferences
+        categoriasGastos = getCategorias(preferences, "categoriasGastos"); // Reemplaza "categoriasGastos" con la clave correcta en SharedPreferences
+        categoriasAhorros = getCategorias(preferences, "categoriasAhorros"); // Reemplaza "categoriasAhorros" con la clave correcta en SharedPreferences
+
+        // Mostrar las categorías en los TextViews correspondientes
+        tvCatIncomes.setText(TextUtils.join(", ", categoriasIngresos));
+        tvCatExpenses.setText(TextUtils.join(", ", categoriasGastos));
+        tvCatSavings.setText(TextUtils.join(", ", categoriasAhorros));
+        double porcentajeCategoria = (montoCategoria / totalSeccion) * 100;
+
         ProgressBar progressBarIncomes = findViewById(R.id.pb_income_overview);
-        progressBarIncomes.setProgress(porcentajeIngresosCategoria1);
+        progressBarIncomes.setProgress((int) porcentajeIngresosCategoria);
 
         ProgressBar progressBarExpenses = findViewById(R.id.pb_expenses_overview);
-        progressBarExpenses.setProgress(porcentajeGastosCategoria1);
+        progressBarExpenses.setProgress((int) porcentajeGastosCategoria);
 
         ProgressBar progressBarSavings = findViewById(R.id.pb_savings_overview);
-        progressBarSavings.setProgress(porcentajeAhorrosCategoria1);
+        progressBarSavings.setProgress((int) porcentajeAhorrosCategoria);
 
+*/
     }
     public void Return(View view){
         Intent intent = new Intent(OverviewActivity.this, detailActivity.class);
