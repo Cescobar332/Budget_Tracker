@@ -52,18 +52,17 @@ public class OverviewActivity extends AppCompatActivity {
         tvCatIncomes.setText(TextUtils.join(", ", categoriasIngresos));
         tvCatExpenses.setText(TextUtils.join(", ", categoriasGastos));
         tvCatSavings.setText(TextUtils.join(", ", categoriasAhorros));
-        double porcentajeCategoria = (montoCategoria / totalSeccion) * 100;
+        double porcentajeCategoria = (montoCategoria / totalSeccion) * 100;*/
 
         ProgressBar progressBarIncomes = findViewById(R.id.pb_income_overview);
-        progressBarIncomes.setProgress((int) porcentajeIngresosCategoria);
-
+        progressBarIncomes.setProgress(100);
         ProgressBar progressBarExpenses = findViewById(R.id.pb_expenses_overview);
-        progressBarExpenses.setProgress((int) porcentajeGastosCategoria);
+        progressBarExpenses.setProgress(100);
 
         ProgressBar progressBarSavings = findViewById(R.id.pb_savings_overview);
-        progressBarSavings.setProgress((int) porcentajeAhorrosCategoria);
+        progressBarSavings.setProgress(100);
 
-*/
+
     }
     public void Return(View view){
         Intent intent = new Intent(OverviewActivity.this, detailActivity.class);
