@@ -211,6 +211,7 @@ public class incomesActivity extends AppCompatActivity {
         myintent.putExtra("valinc", valor);
         myintent.putExtra("tipinc", tipo);
         myintent.putExtra("descinc", descripcion);
+        myintent.putExtra("month", month);
         Query query = categoriasRef.whereEqualTo("nombre", categoria);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
