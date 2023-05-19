@@ -6,6 +6,15 @@ public class Saving {
     private Double value;
     private String category;
 
+    private String month;
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
 
     public Saving(String type, String category, Double value, String detail) {
     }

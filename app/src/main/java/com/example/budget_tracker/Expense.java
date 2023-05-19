@@ -6,6 +6,16 @@ public class Expense {
     private Double value;
     private String category;
 
+    private String month;
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
     public Expense(String type, String detail, Double value, String category) {
 
     }

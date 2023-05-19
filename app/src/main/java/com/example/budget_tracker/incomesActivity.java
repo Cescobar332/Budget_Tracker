@@ -50,10 +50,13 @@ public class incomesActivity extends AppCompatActivity {
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     CollectionReference categoriasRef = firestore.collection("categorias");
+    String month;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incomes);
+        Intent intent = getIntent();
+        month = intent.getStringExtra("month");
         tvfilter1 = findViewById(R.id.tv_filter1111);
         tvfilter2 = findViewById(R.id.tv_filter2222);
         tvfilter3 = findViewById(R.id.tv_filter3333);
@@ -200,6 +203,7 @@ public class incomesActivity extends AppCompatActivity {
         income.setType(tipo);
         income.setDetail(descripcion);
         income.setValue(valor);
+        income.setMonth(month);
         firestore.collection("incomes").add(income);
         Toast.makeText(this, "Se creo el income", Toast.LENGTH_SHORT).show();
         Intent myintent = new Intent(this, detailActivity.class);

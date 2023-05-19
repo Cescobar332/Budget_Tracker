@@ -1,10 +1,13 @@
 package com.example.budget_tracker;
 
+import static android.service.controls.ControlsProviderService.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +15,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +27,9 @@ public class detailActivity extends AppCompatActivity {
     private String month;
 
     Button btnIncome, btnSaving, btnExpense;
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    List<String> BolsillosNames;
+    String mes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,8 @@ public class detailActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
-//        month = getIntent().getStringExtra("month");
+        Intent intent = getIntent();
+        mes = intent.getStringExtra("month");
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -62,24 +72,40 @@ public class detailActivity extends AppCompatActivity {
 
 
         Spinner mySpinner2 = findViewById(R.id.my_spinner2);
-        String[] filterArray = getResources().getStringArray(R.array.wallet_array);
-        List<String> filter = new ArrayList<>(Arrays.asList(filterArray));
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
-        adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        mySpinner2.setAdapter(adapter2);
+        ArrayList<Bolsillo> bolsillosList = new ArrayList<>();
 
-        Intent intent = getIntent();
-        List<String> itemList = intent.getStringArrayListExtra("itemList");
+        firestore.collection("bolsillos")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Bolsillo bolsillo = document.toObject(Bolsillo.class);
+                            bolsillosList.add(bolsillo);
+                        }
+                        BolsillosNames = new ArrayList<>();
+                        for (Bolsillo bolsillo   : bolsillosList) {
+                            BolsillosNames.add(bolsillo.getNombre());
+                        }
+                        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2,BolsillosNames);
+                        adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+                        mySpinner2.setAdapter(adapter2);
 
-        ArrayAdapter<String> adapterbol = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, itemList);
-        adapterbol.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        mySpinner2.setAdapter(adapterbol);
+                        // Aquí es donde debes inicializar el Spinner con los nombres de las categorías
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                });
+        //String[] filterArray = getResources().getStringArray(R.array.wallet_array);
+        //List<String> filter = new ArrayList<>(Arrays.asList(filterArray));
+        //ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
+        //adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+       // mySpinner2.setAdapter(adapter2);
 
-        if (filter.size() >= 3) {
-            tv_filter1.setText(filter.get(0));
-            tv_filter2.setText(filter.get(1));
-            tv_filter3.setText(filter.get(2));
-        }
+        //if (filter.size() >= 3) {
+        //    tv_filter1.setText(filter.get(0));
+        //    tv_filter2.setText(filter.get(1));
+        //    tv_filter3.setText(filter.get(2));
+        //}
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -101,7 +127,7 @@ public class detailActivity extends AppCompatActivity {
         mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = filter.get(position);
+                String selectedOption = BolsillosNames.get(position);
 
             }
 
@@ -124,22 +150,25 @@ public class detailActivity extends AppCompatActivity {
     }
     public void clickOverview (View view){
         Intent intent = new Intent(detailActivity.this, OverviewActivity.class);
-        //intent.putExtra("myIncome");
         startActivity(intent);
     }
 
     public void AddIncome(View view){
+
         Intent intent =  new Intent(this, incomesActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 
     public void AddSaving(View view){
         Intent intent =  new Intent(this, savingsActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 
     public void AddExpense(View view){
         Intent intent =  new Intent(this, expensesActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 

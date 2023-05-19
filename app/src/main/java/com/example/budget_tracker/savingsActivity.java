@@ -48,10 +48,15 @@ public class savingsActivity extends AppCompatActivity {
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     CollectionReference categoriasRef = firestore.collection("categorias");
+
+    String month;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_savings);
+        Intent intent = getIntent();
+        month = intent.getStringExtra("month");
         tvfilter1 = findViewById(R.id.tv_filter111);
         tvfilter2 = findViewById(R.id.tv_filter222);
         tvfilter3 = findViewById(R.id.tv_filter333);
@@ -196,6 +201,7 @@ public class savingsActivity extends AppCompatActivity {
         saving.setType(tipo);
         saving.setDetail(descripcion);
         saving.setValue(valor);
+        saving.setMonth(month);
         firestore.collection("savings").add(saving);
         Toast.makeText(this, "Se creo el saving", Toast.LENGTH_SHORT).show();
         Intent myintent = new Intent(this, detailActivity.class);
