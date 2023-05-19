@@ -47,6 +47,7 @@
     <string name="wallet_name">Wallet\'s name</string>
     <string name="wallet">Wallet</string>
     <string name="wallets_amount">Wallet\'s amount</string>
+    <string name="Wallets" />
     <string-array name="options_array">
         <item>@string/m1</item>
         <item>@string/m2</item>
