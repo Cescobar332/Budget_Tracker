@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -33,6 +32,8 @@ public class BolsillosActivity extends AppCompatActivity {
     private TextView tvBalance, tvSaved, tvSpent;
     private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
+
+    private  SharedPreferences misPreferencias;
     AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class BolsillosActivity extends AppCompatActivity {
         etMontoBolsillo = findViewById(R.id.et_new_wallet_mount);
         idBolsillo = getIntent().getStringExtra("bolsillo_id");
         rvListadoBolsillos =findViewById(R.id.rv_listado_bolsillos);
+        misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
 
         miAdaptador.setOnItemClickListener(new AdaptadorPersonalizado.OnItemClickListener() {
             @Override
@@ -53,6 +55,7 @@ public class BolsillosActivity extends AppCompatActivity {
                 intent.putExtra("bolsillo", miBolsillo);
                 intent.putExtra("bolsillo_id", miBolsillo.getId());
                 startActivity(intent);
+                finish();
             }
 
             @Override
@@ -85,7 +88,11 @@ public class BolsillosActivity extends AppCompatActivity {
                         Bolsillo bolsilloAtrapado = document.toObject(Bolsillo.class);
                         assert bolsilloAtrapado != null;
                         bolsilloAtrapado.setId(document.getId());
-                        listaPrincipalBolsillos.add(bolsilloAtrapado);
+                        String idUser = misPreferencias.getString("userID", "");
+                        Log.d("DEBUG", "UserID: " + idUser);
+                        if (bolsilloAtrapado.getIdUsuario().equals(idUser)) {
+                            listaPrincipalBolsillos.add(bolsilloAtrapado);
+                        }
                     }
                     miAdaptador.setListadoInformacion(listaPrincipalBolsillos);
                 }else{
@@ -108,9 +115,6 @@ public class BolsillosActivity extends AppCompatActivity {
     }
 
     public void AgregarBolsillo(View view) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = user.getUid();
-
         String nombre = etNombreBolsillo.getText().toString();
         Double monto =  Double.parseDouble(etMontoBolsillo.getText().toString());
         String siglaNombre = obtenerSiglaNombre(nombre);
@@ -118,6 +122,8 @@ public class BolsillosActivity extends AppCompatActivity {
         nuevoBolsillo.setNombre(nombre);
         nuevoBolsillo.setSigla(siglaNombre);
         nuevoBolsillo.setMonto(monto);
+        misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        nuevoBolsillo.setIdUsuario(misPreferencias.getString("userID", ""));
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("bolsillos").add(nuevoBolsillo)
@@ -126,7 +132,6 @@ public class BolsillosActivity extends AppCompatActivity {
                     nuevoBolsillo.setId(bolsilloId);
                     listaPrincipalBolsillos.add(nuevoBolsillo);
                     miAdaptador.setListadoInformacion(listaPrincipalBolsillos);
-
                     Toast.makeText(this, "Bolsillo agregado con éxito", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
@@ -142,7 +147,6 @@ public class BolsillosActivity extends AppCompatActivity {
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();
         miEditor.apply();
-
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

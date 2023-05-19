@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                             editor.apply();
                             Intent intent = new Intent(LoginActivity.this, BolsillosActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
                         }
