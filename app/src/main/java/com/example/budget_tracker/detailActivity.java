@@ -197,6 +197,13 @@ public class detailActivity extends AppCompatActivity {
         intent.putExtra("month",mes);
         startActivity(intent);
     }
+    public void navigateToBolsillosActivity(View view) {
+        Intent intent = new Intent(detailActivity.this, BolsillosActivity.class);
+        intent.putExtra("incomesTotal", incomesTotal);
+        intent.putExtra("expensesTotal", expensesTotal);
+        intent.putExtra("savingsTotal", savingsTotal);
+        startActivity(intent);
+    }
     private void sumarValores(String nombreColeccion) {
         TextView tvTotal = findViewById(R.id.tv_total);
         FirebaseFirestore db = FirebaseFirestore.getInstance();

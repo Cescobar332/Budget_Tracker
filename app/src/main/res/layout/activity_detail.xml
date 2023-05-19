@@ -277,7 +277,7 @@
         android:layout_marginEnd="60dp"
         android:background="@drawable/shape_rounded_button"
         android:backgroundTint="@color/blue_light"
-        android:onClick="clickOverview"
+        android:onClick="navigateToBolsillosActivity"
         android:text="Wallets"
         android:textAppearance="@style/ButtonTextStyle"
         android:textColor="@color/white"

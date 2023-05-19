@@ -73,7 +73,16 @@ public class BolsillosActivity extends AppCompatActivity {
         rvListadoBolsillos.setAdapter(miAdaptador);
         rvListadoBolsillos.setLayoutManager(new LinearLayoutManager(this));
 
+        // Obtener los valores de incomesTotal, expensesTotal y savingsTotal del intent
+        Double incomesTotal = getIntent().getDoubleExtra("incomesTotal", 0.0);
+        Double expensesTotal = getIntent().getDoubleExtra("expensesTotal", 0.0);
+        Double savingsTotal = getIntent().getDoubleExtra("savingsTotal", 0.0);
 
+        // Usar los valores como desees
+        // Por ejemplo, puedes asignar los valores a los TextView correspondientes
+        tvBalance.setText(String.valueOf(incomesTotal - (expensesTotal + savingsTotal)));
+        tvSaved.setText(String.valueOf(savingsTotal));
+        tvSpent.setText(String.valueOf(expensesTotal));
     }
 
     @Override
