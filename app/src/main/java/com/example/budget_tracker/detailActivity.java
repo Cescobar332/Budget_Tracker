@@ -16,8 +16,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,12 +29,19 @@ import java.util.List;
 
 public class detailActivity extends AppCompatActivity {
     private String month;
+    private TextView tvTotal;
 
     Button btnIncome, btnSaving, btnExpense;
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     List<String> BolsillosNames;
     String mes;
+    private static final String TAG = "MainActivity";
+    Double incomesTotal = 0.0;
+    Double expensesTotal = 0.0;
+    Double savingsTotal = 0.0;
 
+    // Calcular la suma total según la fórmula
+    Double total = incomesTotal - (expensesTotal + savingsTotal);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +52,11 @@ public class detailActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
+
+        sumarValores("incomes");
+        sumarValores("savings");
+        sumarValores("expenses");
+
         Intent intent = getIntent();
         mes = intent.getStringExtra("month");
 
@@ -137,6 +153,7 @@ public class detailActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void CerrarSesion(View view) {
@@ -171,5 +188,44 @@ public class detailActivity extends AppCompatActivity {
         intent.putExtra("month",mes);
         startActivity(intent);
     }
+    private void sumarValores(String nombreColeccion) {
+        TextView tvTotal = findViewById(R.id.tv_total);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference coleccionRef = db.collection(nombreColeccion);
 
+        coleccionRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                Double sum = 0.0;
+                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    Long valorLong = documentSnapshot.getLong("value");
+                    if (valorLong != null) {
+                        Double valor = valorLong.doubleValue();
+                        sum += valor;
+                    }
+                }
+
+
+                Toast.makeText(detailActivity.this, "Suma total para la colección " + nombreColeccion + ": " + sum, Toast.LENGTH_SHORT).show();
+
+                // Actualizar las variables según la colección
+                if (nombreColeccion.equals("incomes")) {
+                    incomesTotal = sum;
+                } else if (nombreColeccion.equals("expenses")) {
+                    expensesTotal = sum;
+                } else if (nombreColeccion.equals("savings")) {
+                    savingsTotal = sum;
+                }
+
+                // Calcular la suma total final
+                Double total = incomesTotal - (expensesTotal + savingsTotal);
+
+                Toast.makeText(detailActivity.this, "Suma total final: " + total, Toast.LENGTH_SHORT).show();
+                // Mostrar el resultado en el TextView
+                tvTotal.setText((total).toString());
+            }
+
+        });
+    }
 }
+
