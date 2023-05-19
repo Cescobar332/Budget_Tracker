@@ -11,12 +11,10 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
     public void clickMes (View view){
         Button clickedButton = (Button) view;
@@ -31,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();
         miEditor.apply();
-
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
