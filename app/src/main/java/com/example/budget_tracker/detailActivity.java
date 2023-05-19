@@ -29,6 +29,7 @@ public class detailActivity extends AppCompatActivity {
     Button btnIncome, btnSaving, btnExpense;
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     List<String> BolsillosNames;
+    String mes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class detailActivity extends AppCompatActivity {
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
-//        month = getIntent().getStringExtra("month");
+        Intent intent = getIntent();
+        mes = intent.getStringExtra("month");
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -148,22 +150,25 @@ public class detailActivity extends AppCompatActivity {
     }
     public void clickOverview (View view){
         Intent intent = new Intent(detailActivity.this, OverviewActivity.class);
-        //intent.putExtra("myIncome");
         startActivity(intent);
     }
 
     public void AddIncome(View view){
+
         Intent intent =  new Intent(this, incomesActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 
     public void AddSaving(View view){
         Intent intent =  new Intent(this, savingsActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 
     public void AddExpense(View view){
         Intent intent =  new Intent(this, expensesActivity.class);
+        intent.putExtra("month",mes);
         startActivity(intent);
     }
 

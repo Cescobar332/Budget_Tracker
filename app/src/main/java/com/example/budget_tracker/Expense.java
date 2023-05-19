@@ -8,6 +8,14 @@ public class Expense {
 
     private String month;
 
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
     public Expense(String type, String detail, Double value, String category) {
 
     }
