@@ -59,7 +59,6 @@ public class BolsillosActivity extends AppCompatActivity {
                 List<String> itemList = new ArrayList<>();
                 itemList.add(String.valueOf(listaPrincipalBolsillos));
                 myintent.putStringArrayListExtra("itemList", new ArrayList<>(itemList));
-                startActivity(myintent);
 
             }
 
