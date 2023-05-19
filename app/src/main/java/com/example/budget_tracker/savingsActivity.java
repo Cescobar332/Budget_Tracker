@@ -209,6 +209,7 @@ public class savingsActivity extends AppCompatActivity {
         myintent.putExtra("valsav", valor);
         myintent.putExtra("tipsav", tipo);
         myintent.putExtra("descsav", descripcion);
+        myintent.putExtra("month", month);
         Query query = categoriasRef.whereEqualTo("nombre", categoria);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

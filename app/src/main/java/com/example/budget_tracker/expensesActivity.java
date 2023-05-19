@@ -212,6 +212,7 @@ public class expensesActivity extends AppCompatActivity {
         myintent.putExtra("valexp", valor);
         myintent.putExtra("tipexp", tipo);
         myintent.putExtra("descexp", descripcion);
+        myintent.putExtra("month", month);
         Query query = categoriasRef.whereEqualTo("nombre", categoria);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
