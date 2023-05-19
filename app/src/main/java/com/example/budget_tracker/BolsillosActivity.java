@@ -47,7 +47,6 @@ public class BolsillosActivity extends AppCompatActivity {
         rvListadoBolsillos =findViewById(R.id.rv_listado_bolsillos);
         misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
 
-
         miAdaptador.setOnItemClickListener(new AdaptadorPersonalizado.OnItemClickListener() {
             @Override
             public void OnItemClick(Bolsillo miBolsillo, int posicion) {
@@ -55,6 +54,7 @@ public class BolsillosActivity extends AppCompatActivity {
                 intent.putExtra("bolsillo", miBolsillo);
                 intent.putExtra("bolsillo_id", miBolsillo.getId());
                 startActivity(intent);
+                finish();
             }
 
             @Override
@@ -114,7 +114,6 @@ public class BolsillosActivity extends AppCompatActivity {
     }
 
     public void AgregarBolsillo(View view) {
-
         String nombre = etNombreBolsillo.getText().toString();
         Double monto =  Double.parseDouble(etMontoBolsillo.getText().toString());
         String siglaNombre = obtenerSiglaNombre(nombre);
@@ -132,7 +131,6 @@ public class BolsillosActivity extends AppCompatActivity {
                     nuevoBolsillo.setId(bolsilloId);
                     listaPrincipalBolsillos.add(nuevoBolsillo);
                     miAdaptador.setListadoInformacion(listaPrincipalBolsillos);
-
                     Toast.makeText(this, "Bolsillo agregado con éxito", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
@@ -148,7 +146,6 @@ public class BolsillosActivity extends AppCompatActivity {
         SharedPreferences.Editor miEditor = misPreferencias.edit();
         miEditor.clear();
         miEditor.apply();
-
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

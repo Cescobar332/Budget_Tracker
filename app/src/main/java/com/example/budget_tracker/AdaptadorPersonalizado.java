@@ -37,8 +37,8 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorPersonalizado.ViewHolder holder, int position) {
-    Bolsillo miBolsillo = listadoInformacion.get(position);
-    holder.enlazar(miBolsillo);
+        Bolsillo miBolsillo = listadoInformacion.get(position);
+        holder.enlazar(miBolsillo);
     }
 
     @Override
@@ -67,13 +67,13 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
                     public void onClick(View view) {
                         onItemClickListener.OnItemClick(miBolsillo, getAdapterPosition());
                     }
-            });
-            btnEliminar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onItemClickListener.OnItemBtnEliminarClick(miBolsillo, getAdapterPosition());
-                }
-            });
+                });
+                btnEliminar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onItemClickListener.OnItemBtnEliminarClick(miBolsillo, getAdapterPosition());
+                    }
+                });
             }
         }
     }
