@@ -31,6 +31,7 @@ public class BolsillosActivity extends AppCompatActivity {
     private TextView tvBalance, tvSaved, tvSpent;
     private EditText etNombreBolsillo, etMontoBolsillo;
     private String idBolsillo;
+    Double totalBalance = 0.0;
 
     private  SharedPreferences misPreferencias;
     AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(listaPrincipalBolsillos);
@@ -80,7 +81,8 @@ public class BolsillosActivity extends AppCompatActivity {
 
         // Usar los valores como desees
         // Por ejemplo, puedes asignar los valores a los TextView correspondientes
-        tvBalance.setText(String.valueOf(incomesTotal - (expensesTotal + savingsTotal)));
+        totalBalance = incomesTotal - (expensesTotal + savingsTotal);
+        tvBalance.setText(String.valueOf(totalBalance));
         tvSaved.setText(String.valueOf(savingsTotal));
         tvSpent.setText(String.valueOf(expensesTotal));
     }
@@ -113,6 +115,14 @@ public class BolsillosActivity extends AppCompatActivity {
                 }
             }
         });
+
+        for (Bolsillo bolsilloAtrapado : listaPrincipalBolsillos) {
+            // ... código existente para agregar el bolsillo a la lista ...
+
+            totalBalance += bolsilloAtrapado.getMonto(); // Sumar el monto del bolsillo al totalBalance
+        }
+
+        tvBalance.setText(String.valueOf(totalBalance));
     }
     private String obtenerSiglaNombre(String nombreBolsillo) {
         StringBuilder sigla = new StringBuilder();
@@ -150,6 +160,9 @@ public class BolsillosActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error al agregar el bolsillo", Toast.LENGTH_SHORT).show();
                 });
+        Double montoInicial = nuevoBolsillo.getMonto();
+        totalBalance += montoInicial;
+        tvBalance.setText(String.valueOf(totalBalance));
         etNombreBolsillo.setText("");
         etMontoBolsillo.setText("");
         etMontoBolsillo.clearFocus();
