@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="$10000"
-        android:textColor="@color/black"
         android:textSize="28dp"
         app:layout_constraintStart_toStartOf="@+id/tv_balance_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_overview" />
@@ -69,7 +68,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_incomes_overview"
         app:srcCompat="@drawable/pincomes" />
@@ -126,7 +125,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_expenses_overview"
         app:srcCompat="@drawable/bexpenses" />
@@ -161,7 +160,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/savings"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_expenses_overview" />
@@ -173,7 +172,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="$3000"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         app:layout_constraintStart_toEndOf="@+id/tv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/pb_expenses_overview" />
 
@@ -183,7 +182,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_overview"
         app:srcCompat="@drawable/gsavings" />
@@ -195,7 +194,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:progressTint="@color/green_dark"
+        android:progressTint="@color/blue_light"
         app:layout_constraintStart_toEndOf="@+id/iv_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_savings_num_overview" />
 
@@ -206,7 +205,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="78dp"
         android:text="Gifts"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/blue_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pb_savings_overview"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria_expenses_overview" />
@@ -236,10 +235,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:background="@drawable/shape_rounded_button"
-        android:backgroundTint="@color/blue_light"
+        android:backgroundTint="@color/white"
         android:onClick="Return"
         android:text="Return"
-        android:textColor="@color/white"
+        android:textColor="@color/blue_light"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
