@@ -3,6 +3,7 @@ package com.example.budget_tracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,53 +12,25 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class detailActivity extends AppCompatActivity implements Serializable {
-    private Spinner spinner2;
-    private AdaptadorPersonalizado miAdaptador;
-    private Button btnadd, btnadd1, btnadd2;
-    private TextView tvTotal;
-    private int mTotalIncomes = 0;
+public class detailActivity extends AppCompatActivity {
 
+
+    String textodeprueba;
+    Button btnIncome, btnSaving, btnExpense;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        btnadd = findViewById(R.id.btn_add1);
-        btnadd1 = findViewById(R.id.btn_add);
-        btnadd2 = findViewById(R.id.btn_add2);
-
+        btnIncome = findViewById(R.id.btn_add1);
+        btnExpense = findViewById(R.id.btn_add);
+        btnSaving = findViewById(R.id.btn_add2);
         TextView tv_filter1 = findViewById(R.id.tv_filter1);
         TextView tv_filter2 = findViewById(R.id.tv_filter2);
         TextView tv_filter3 = findViewById(R.id.tv_filter3);
-        TextView tvTotal = findViewById(R.id.tv_total);
-
-        btnadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(detailActivity.this, incomesActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnadd1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(detailActivity.this, expensesActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnadd2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(detailActivity.this, savingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         Spinner mySpinner = findViewById(R.id.my_spinner_savings);
         String[] optionsArray = getResources().getStringArray(R.array.options_array);
@@ -67,70 +40,23 @@ public class detailActivity extends AppCompatActivity implements Serializable {
         mySpinner.setAdapter(adapter);
 
         Spinner mySpinner2 = findViewById(R.id.my_spinner2);
-        String[] filterArray = getResources().getStringArray(R.array.filter_array);
+        String[] filterArray = getResources().getStringArray(R.array.wallet_array);
         List<String> filter = new ArrayList<>(Arrays.asList(filterArray));
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spinner_item2, filter);
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
         mySpinner.setAdapter(adapter);
 
-        Intent intent2 = getIntent();
-        List<String> listado = intent2.getStringArrayListExtra("listado");
-
-        ArrayAdapter<String> nuevoadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listado);
-        nuevoadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(nuevoadapter);
-
-        //savings
-        Intent myintent = getIntent();
-
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        int valSav = myintent.getIntExtra("valsav", 1);
-
-        //incomes
-        Intent intent = getIntent();
-
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        int valInc= intent.getIntExtra("valinc", 5);
-        mTotalIncomes += valInc;
-
-        //expenses
-        Intent myintent2 = getIntent();
-
-        // Obtiene el valor del Intent con la clave "mi_valor"
-        int valexp= myintent2.getIntExtra("valexp", 1);
-
-        int result = mTotalIncomes - valSav - valexp;
-        tvTotal.setText(String.valueOf(result));
-
-
-        mySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Object elementoSeleccionado = parent.getItemAtPosition(position);
-                // Hacer algo con el elemento seleccionado
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // No se ha seleccionado nada en el Spinner
-            }
-        });
-
-
-        String monthName = getIntent().getStringExtra("MONTH_NAME");
-
         if (filter.size() >= 3) {
-            tv_filter1.setText(filter.get(1));
-            tv_filter2.setText(filter.get(2));
-            tv_filter3.setText(filter.get(3));
+            tv_filter1.setText(filter.get(0));
+            tv_filter2.setText(filter.get(1));
+            tv_filter3.setText(filter.get(2));
         }
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedOption = options.get(position);
-                // Lógica para cuando se selecciona una opción del spinner
             }
 
             @Override
@@ -151,8 +77,37 @@ public class detailActivity extends AppCompatActivity implements Serializable {
                 // Lógica para cuando no se ha seleccionado ninguna opción del spinner
             }
         });
+
     }
 
+    public void CerrarSesion(View view) {
+        SharedPreferences misPreferencias = getSharedPreferences("budget_tracker", MODE_PRIVATE);
+        SharedPreferences.Editor miEditor = misPreferencias.edit();
+        miEditor.clear();
+        miEditor.apply();
 
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
+    public void clickOverview (View view){
+        Intent intent = new Intent(detailActivity.this, OverviewActivity.class);
+        //intent.putExtra("myIncome");
+        startActivity(intent);
+    }
+
+    public void AddIncome(View view){
+        Intent intent =  new Intent(this, incomesActivity.class);
+        startActivity(intent);
+    }
+
+    public void AddSaving(View view){
+        Intent intent =  new Intent(this, savingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void AddExpense(View view){
+        Intent intent =  new Intent(this, expensesActivity.class);
+        startActivity(intent);
+    }
 
 }
