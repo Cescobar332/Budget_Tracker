@@ -214,14 +214,14 @@ public class expensesActivity extends AppCompatActivity {
                 if (!snapshot.isEmpty()) {
                     // El objeto existe en la colección
                     DocumentSnapshot document = snapshot.getDocuments().get(0);
-                    if(document.getDouble("valexp") == null){
+                    if(document.getDouble("montoexp") == null){
 
                         valorActual = 0.0;
                     }else{
-                        valorActual = document.getDouble("valexp");
+                        valorActual = document.getDouble("montoexp");
                     }
                     Double valorNuevo =   valorActual + Double.parseDouble(expense.getValue().toString());
-                    document.getReference().update("valexp", valorNuevo);
+                    document.getReference().update("montoexp", valorNuevo);
                 } else {
                     // El objeto no existe en la colección
                     Log.d(TAG, "El objeto no existe en la colección");
