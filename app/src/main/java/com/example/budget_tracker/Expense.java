@@ -6,6 +6,8 @@ public class Expense {
     private Double value;
     private String category;
 
+    private String month;
+
     public Expense(String type, String detail, Double value, String category) {
 
     }
