@@ -68,6 +68,13 @@ public class detailActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         mySpinner2.setAdapter(adapter2);
 
+        Intent intent = getIntent();
+        List<String> itemList = intent.getStringArrayListExtra("itemList");
+
+        ArrayAdapter<String> adapterbol = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, itemList);
+        adapterbol.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        mySpinner2.setAdapter(adapterbol);
+
         if (filter.size() >= 3) {
             tv_filter1.setText(filter.get(0));
             tv_filter2.setText(filter.get(1));
