@@ -6,6 +6,8 @@ public class Saving {
     private Double value;
     private String category;
 
+    private String month;
+
 
     public Saving(String type, String category, Double value, String detail) {
     }
