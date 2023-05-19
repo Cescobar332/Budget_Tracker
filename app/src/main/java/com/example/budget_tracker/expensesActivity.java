@@ -48,10 +48,14 @@ public class expensesActivity extends AppCompatActivity {
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     CollectionReference categoriasRef = firestore.collection("categorias");
+
+    String month;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
+        Intent intent = getIntent();
+        month = intent.getStringExtra("month");
         tvfilter1 = findViewById(R.id.tv_filter11);
         tvfilter2 = findViewById(R.id.tv_filter22);
         tvfilter3 = findViewById(R.id.tv_filter33);
@@ -200,6 +204,7 @@ public class expensesActivity extends AppCompatActivity {
         expense.setType(tipo);
         expense.setDetail(descripcion);
         expense.setValue(valor);
+        expense.setMonth(month);
         firestore.collection("expenses").add(expense);
         Toast.makeText(this, "Se creo el expense", Toast.LENGTH_SHORT).show();
         Intent myintent = new Intent(this, detailActivity.class);

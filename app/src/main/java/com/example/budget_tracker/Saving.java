@@ -8,6 +8,13 @@ public class Saving {
 
     private String month;
 
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
 
     public Saving(String type, String category, Double value, String detail) {
     }

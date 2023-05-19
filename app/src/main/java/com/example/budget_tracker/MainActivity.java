@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
 
         Intent intent = new Intent(MainActivity.this, detailActivity.class);
+        intent.putExtra("month", month);
         startActivity(intent);
     }
 
